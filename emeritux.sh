@@ -652,7 +652,7 @@ uninstall_e23() {
 
   cd $HOME
   rm -rf $E23
-  rm -rf emeritux/
+  rm -rf $SCRFLR
   rm -rf .e/
   rm -rf .elementary/
   rm -rf .cache/efreet/
