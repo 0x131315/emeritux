@@ -52,7 +52,7 @@ DOCDIR=$(xdg-user-dir DOCUMENTS)
 ICNV=libiconv-1.15
 MVER=0.50.0
 E23=$DOCDIR/sources/enlightenment23
-#SCRFLR=$HOME/emeritux
+SCRFLR=$HOME/emeritux
 SNIN="sudo ninja -C build install"
 RELEASE=$(lsb_release -sc)
 DISTRIBUTOR=$(lsb_release -i | cut -f2)
@@ -332,11 +332,11 @@ do_tests() {
     exit 1
   fi
 
-  #if [ ! -d $SCRFLR ]; then
-  #printf "\n$BDR%s $OFF%s\n\n" "EMERITUX GIT FOLDER NOT FOUND!"
-  #beep_exit
-  #exit 1
-  #fi
+  if [ ! -d $SCRFLR ]; then
+  printf "\n$BDR%s $OFF%s\n\n" "EMERITUX GIT FOLDER NOT FOUND!"
+  beep_exit
+  exit 1
+  fi
 
   if [ $RELEASE == tessa ]; then
     printf "\n$BDG%s $OFF%s\n\n" "Linux Mint ${RELEASE^}... OK"
@@ -462,8 +462,8 @@ install_go() {
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
     /usr/share/xsessions/enlightenment.desktop
 
-  #gio set $SCRFLR metadata::custom-icon \
-  #file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
+  gio set $SCRFLR metadata::custom-icon \
+  file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
 
   gio set $DOCDIR/sources/ metadata::custom-icon \
     file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
@@ -498,9 +498,9 @@ update_go() {
     printf "\n$BDG%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT 23 *"
   fi
 
-  #cp -f $SCRFLR/emeritux.sh $HOME/.local/bin/
-  #chmod +x $HOME/.local/bin/emeritux.sh
-  #sleep 1
+  cp -f $SCRFLR/emeritux.sh $HOME/.local/bin/
+  chmod +x $HOME/.local/bin/emeritux.sh
+  sleep 1
 
   printf "\n$BLD%s $OFF%s\n\n" "Satisfying dependencies under Linux Mint ${RELEASE^}..."
   bin_deps
@@ -537,9 +537,9 @@ wld_go() {
     printf "\n$BDY%s $OFF%s\n\n" "*  UPDATING ENLIGHTENMENT 23 *"
   fi
 
-  #cp -f $SCRFLR/emeritux.sh $HOME/.local/bin/
-  #chmod +x $HOME/.local/bin/emeritux.sh
-  #sleep 1
+  cp -f $SCRFLR/emeritux.sh $HOME/.local/bin/
+  chmod +x $HOME/.local/bin/emeritux.sh
+  sleep 1
 
   printf "\n$BLD%s $OFF%s\n\n" "Satisfying dependencies under Linux Mint ${RELEASE^}..."
   bin_deps
