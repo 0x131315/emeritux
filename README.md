@@ -1,5 +1,5 @@
 # emeritux.sh. 
-A Bash script to build and install Enlightenment 23 GIT on Linux Mint 19.1 Tessa  
+A Bash script to build and install Enlightenment 23 on Linux Mint Tessa  
 (support for 32-bit and 64-bit architectures).
 
 While this script has been thoroughly tried and tested, it's a good idea to use Timeshift  
