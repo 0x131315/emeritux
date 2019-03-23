@@ -36,7 +36,7 @@ On subsequent runs, open Terminal and simply type:
 emeritux.sh
 ```
 
-(Use tab completion: Just type  _eff_  and press Tab)
+(Use tab completion: Just type  _eme_  and press Tab)
 
 ### **Update local repository**
 
@@ -47,4 +47,3 @@ In order to do this, change to ~/emeritux/ and run:
 ```bash
 git pull
 ```
-
