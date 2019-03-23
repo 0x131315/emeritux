@@ -324,7 +324,7 @@ do_tests() {
   printf "\n\n$BLD%s $OFF%s\n" "SCANNING SYSTEM AND GIT REPOSITORIES..."
   sleep 1
 
-  # (Users of VirtualBox: Comment out the following lines if you get unexpected network errors)
+  # Users of VirtualBox: Comment out the following lines if you get unexpected network errors.
   if systemd-detect-virt -q --container; then
     printf "\n$BDR%s %s\n" "EMERITUX.SH IS NOT INTENDED FOR USE INSIDE CONTAINERS."
     printf "$BDR%s $OFF%s\n\n" "SCRIPT ABORTED."
@@ -389,7 +389,7 @@ do_bsh_alias() {
         export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
         # Enable parallel build.
-        # (Comment out the line below if you get unusual build errors with other projects)
+        # Comment out the line below if you get unusual build errors with other projects.
         export MAKE="make -j$(($(getconf _NPROCESSORS_ONLN) * 2))"
 
         # This script adds the ~/.local/bin/ directory to your PATH environment variable if required.
