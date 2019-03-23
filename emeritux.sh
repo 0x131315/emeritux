@@ -333,9 +333,9 @@ do_tests() {
   fi
 
   if [ ! -d $SCRFLR ]; then
-  printf "\n$BDR%s $OFF%s\n\n" "EMERITUX GIT FOLDER NOT FOUND!"
-  beep_exit
-  exit 1
+    printf "\n$BDR%s $OFF%s\n\n" "EMERITUX GIT FOLDER NOT FOUND!"
+    beep_exit
+    exit 1
   fi
 
   if [ $RELEASE == tessa ]; then
@@ -463,7 +463,7 @@ install_go() {
     /usr/share/xsessions/enlightenment.desktop
 
   gio set $SCRFLR metadata::custom-icon \
-  file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
+    file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
 
   gio set $DOCDIR/sources/ metadata::custom-icon \
     file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
