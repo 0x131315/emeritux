@@ -1,6 +1,6 @@
 # emeritux.sh
 
-**A BASH script to build Enlightenment 23 GIT on Linux Mint 19.1 Tessa**  
+A Bash script to build Enlightenment 23 GIT on Linux Mint 19.1 Tessa  
 
 ## **Get started**
 
