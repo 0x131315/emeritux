@@ -1,6 +1,7 @@
 # emeritux.sh
 
 A Bash script to build Enlightenment 23 GIT on Linux Mint 19.1 Tessa  
+(support for 32-bit and 64-bit architectures).
 
 ## **Get started**
 
