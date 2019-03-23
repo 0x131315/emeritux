@@ -47,3 +47,7 @@ In order to do this, change to ~/emeritux/ and run:
 ```bash
 git pull
 ```
+
+That's it.
+
+Mind the cows! :cow2: :cow2:  :cow2:
