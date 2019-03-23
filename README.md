@@ -1,4 +1,4 @@
-# emeritux.sh. 
+# emeritux.sh 
 A Bash script to build and install Enlightenment 23 on Linux Mint Tessa  
 (support for 32-bit and 64-bit architectures).
 
