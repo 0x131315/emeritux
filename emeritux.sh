@@ -659,7 +659,17 @@ uninstall_e23() {
   rm -rf .cache/evas_gl_common_caches//
   rm -rf .config/terminology/
 
-  cd /usr/local/bin
+  cd /usr/local/
+  sudo rm -rf ecore*
+  sudo rm -rf edje*
+  sudo rm -rf efl*
+  sudo rm -rf eio*
+  sudo rm -rf eldbus*
+  sudo rm -rf elementary*
+  sudo rm -rf eo*
+  sudo rm -rf evas*
+
+  cd /usr/local/bin/
   sudo rm -rf efl*
   sudo rm -rf elua*
   sudo rm -rf eolian*
