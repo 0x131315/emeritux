@@ -1,6 +1,7 @@
 # emeritux.sh 
-A Bash script to build and install Enlightenment 23 on Linux Mint Tessa  
-(support for 32-bit and 64-bit architectures).
+A Bash script to build and install Enlightenment 23 on Linux Mint Tessa.  
+
+Note that the Enlightenment Foundation Libraries (EFL) are built with the Meson Build System.
 
 While this script has been thoroughly tried and tested, it's a good idea to use Timeshift  
 to create a system snapshot before the first run, as an extra safety precaution.
