@@ -33,7 +33,7 @@
 # or starring this project to show your support.
 # Cheers!
 
-# Repository:TODO link
+# Repository: https://github.com/batden/emeritux
 # Themes and backgrounds: https://extra.enlightenment.org/
 
 # LOCAL VARIABLES
