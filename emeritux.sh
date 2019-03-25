@@ -34,6 +34,7 @@
 # Cheers!
 
 # Repository: https://github.com/batden/emeritux
+# Forum topic: https://forums.linuxmint.com/viewtopic.php?f=42&t=277518
 # Themes and backgrounds: https://extra.enlightenment.org/
 
 # LOCAL VARIABLES
