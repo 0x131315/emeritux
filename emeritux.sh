@@ -836,6 +836,8 @@ uninstall_e23() {
   sudo ldconfig
   sudo updatedb
   echo
+  # Candidates for deletion——run:
+  # locate emeritux.sh
 }
 
 main() {
