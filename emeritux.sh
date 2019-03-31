@@ -325,16 +325,9 @@ do_tests() {
   printf "\n\n$BLD%s $OFF%s\n" "SCANNING SYSTEM AND GIT REPOSITORIES..."
   sleep 1
 
-  # Users of VirtualBox: Comment out the following lines if you get unexpected network errors.
   if systemd-detect-virt -q --container; then
     printf "\n$BDR%s %s\n" "EMERITUX.SH IS NOT INTENDED FOR USE INSIDE CONTAINERS."
     printf "$BDR%s $OFF%s\n\n" "SCRIPT ABORTED."
-    beep_exit
-    exit 1
-  fi
-
-  if [ ! -d $SCRFLR ]; then
-    printf "\n$BDR%s $OFF%s\n\n" "EMERITUX GIT FOLDER NOT FOUND!"
     beep_exit
     exit 1
   fi
@@ -354,10 +347,17 @@ do_tests() {
     exit 1
   fi
 
-  ping -c 2 git.enlightenment.org &>/dev/null
+  # Users of VirtualBox: Comment out the following lines if you get unexpected network errors.
+  git ls-remote https://git.enlightenment.org/core/efl.git HEAD &>/dev/null
   if [ $? -ne 0 ]; then
     printf "\n$BDR%s %s\n" "REMOTE HOST IS UNREACHABLE——TRY AGAIN LATER"
-    printf "$BDR%s $OFF%s\n\n" "OR VERIFY YOUR NETWORK CONNECTION."
+    printf "$BDR%s $OFF%s\n\n" "(OR CHECK YOUR INTERNET CONNECTION)."
+    beep_exit
+    exit 1
+  fi
+
+  if [ ! -d $SCRFLR ]; then
+    printf "\n$BDR%s $OFF%s\n\n" "EFFECTIV GIT FOLDER NOT FOUND!"
     beep_exit
     exit 1
   fi
