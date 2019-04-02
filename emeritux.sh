@@ -431,7 +431,7 @@ get_meson() {
 
 install_go() {
   clear
-  printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT 23 *"
+  printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT *"
   do_bsh_alias
   bin_deps
 
@@ -646,7 +646,7 @@ remov_bin_deps() {
 
 uninstall_e23() {
   clear
-  printf "\n\n$BDR%s %s\n\n" "* UNINSTALLING ENLIGHTENMENT 23... *"
+  printf "\n\n$BDR%s %s\n\n" "* UNINSTALLING ENLIGHTENMENT *"
 
   for I in $PROG_MN; do
     cd $E23/$I && remov_eprog_mn
