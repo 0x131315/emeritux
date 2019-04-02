@@ -497,7 +497,7 @@ update_go() {
     beep_exit
     exit 1
   else
-    printf "\n$BDG%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP *"
+    printf "\n$LTC%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP *"
   fi
 
   cp -f $SCRFLR/emeritux.sh $HOME/.local/bin/
