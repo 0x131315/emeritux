@@ -578,7 +578,7 @@ remov_preq() {
   if [ -d $DOCDIR/sources/$ICNV ]; then
     echo
     beep_question
-    read -t 10 -p "Remove libiconv installed from tarball? [y/N] " answer
+    read -t 10 -p "Remove libiconv installed from tarball? [Y/n] " answer
     case $answer in
     [yY])
       echo
@@ -592,7 +592,12 @@ remov_preq() {
       printf "\n%s\n\n" "(do not remove libiconv... OK)"
       ;;
     *)
-      printf "\n%s\n\n" "(do not remove libiconv... OK)"
+      echo
+      cd $DOCDIR/sources/$ICNV
+      sudo make uninstall
+      make maintainer-clean
+      cd .. && rm -rf $DOCDIR/sources/$ICNV
+      echo
       ;;
     esac
   fi
