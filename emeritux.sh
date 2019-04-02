@@ -431,7 +431,7 @@ get_meson() {
 
 install_go() {
   clear
-  printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT *"
+  printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP *"
   do_bsh_alias
   bin_deps
 
@@ -497,7 +497,7 @@ update_go() {
     beep_exit
     exit 1
   else
-    printf "\n$BDG%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT 23 *"
+    printf "\n$BDG%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP *"
   fi
 
   cp -f $SCRFLR/emeritux.sh $HOME/.local/bin/
@@ -536,7 +536,7 @@ wld_go() {
     beep_exit
     exit 1
   else
-    printf "\n$BDY%s $OFF%s\n\n" "*  UPDATING ENLIGHTENMENT 23 *"
+    printf "\n$BDY%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP *"
   fi
 
   cp -f $SCRFLR/emeritux.sh $HOME/.local/bin/
@@ -646,7 +646,7 @@ remov_bin_deps() {
 
 uninstall_e23() {
   clear
-  printf "\n\n$BDR%s %s\n\n" "* UNINSTALLING ENLIGHTENMENT *"
+  printf "\n\n$BDR%s %s\n\n" "* UNINSTALLING ENLIGHTENMENT DESKTOP *"
 
   for I in $PROG_MN; do
     cd $E23/$I && remov_eprog_mn
