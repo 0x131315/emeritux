@@ -3,7 +3,7 @@
 # EMERITUX.SH
 
 # This Bash script allows you to safely and easily download, install, update the GIT master version
-# of Enlightenment 0.23 (aka E23) on Linux Mint 19.1 Tessa; or helps you perform a clean uninstall
+# of Enlightenment 0.23 (aka E23) on Linux Mint Tessa; or helps you perform a clean uninstall
 # of E23 GIT.
 
 # To execute the script:
