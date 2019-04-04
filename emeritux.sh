@@ -578,7 +578,7 @@ remov_preq() {
   if [ -d $DOCDIR/sources/$ICNV ]; then
     echo
     beep_question
-    # Questions: Press Enter (or wait for 10 seconds) to accept the default values.
+    # Questions: Enter either y or n, or Press Enter to accept the default values.
     read -t 10 -p "Remove libiconv installed from tarball? [Y/n] " answer
     case $answer in
     [yY])
