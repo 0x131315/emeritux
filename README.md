@@ -5,9 +5,6 @@ A neat Bash script to build and install Enlightenment 23 on Linux Mint Tessa.
 Note that the Enlightenment Foundation Libraries (EFL) are built using the Meson Build System.  
 An alternative build script is available [here](https://github.com/batden/effectiv); keep in mind that the two scripts are mutually exclusive.
 
-While this script has been thoroughly tried and tested, it's a good idea to use Timeshift  
-to create a system snapshot before the first run, as an extra safety precaution.
-
 ## **Get started**
 
 Make sure that the `git` package is installed, then open Terminal and clone this repository:
