@@ -376,7 +376,7 @@ do_bsh_alias() {
   if [ ! -f $HOME/.bash_aliases ]; then
     touch $HOME/.bash_aliases
 
-    cat >$HOME/.bash_aliases <<-EOF
+    cat >$HOME/.bash_aliases <<EOF
 
         # EMERITUX.SH ADDITIONS
         # --------------------
