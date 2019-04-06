@@ -33,8 +33,8 @@
 # or starring this project to show your support.
 # Cheers!
 
-# Repository: https://github.com/batden/emeritux
-# Themes and backgrounds: https://extra.enlightenment.org/
+# Repositories and gists: https://github.com/batden
+# Eyecandy for your Enlightenment desktop: https://extra.enlightenment.org/
 
 # LOCAL VARIABLES
 # ---------------
