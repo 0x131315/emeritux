@@ -380,7 +380,7 @@ do_bsh_alias() {
     cat >$HOME/.bash_aliases <<EOF
 
         # EMERITUX.SH ADDITIONS
-        # --------------------
+        # ---------------------
 
         # Compiler and linker flags.
         export CC="ccache gcc"
