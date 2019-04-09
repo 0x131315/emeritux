@@ -373,6 +373,7 @@ do_tests() {
   fi
 }
 
+# Global variables.
 do_bsh_alias() {
   if [ ! -f $HOME/.bash_aliases ]; then
     touch $HOME/.bash_aliases
