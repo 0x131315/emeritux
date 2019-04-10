@@ -373,15 +373,14 @@ do_tests() {
   fi
 }
 
-# Global variables.
 do_bsh_alias() {
   if [ ! -f $HOME/.bash_aliases ]; then
     touch $HOME/.bash_aliases
 
     cat >$HOME/.bash_aliases <<EOF
 
-        # EMERITUX.SH ADDITIONS
-        # ---------------------
+        # GLOBAL VARIABLES
+        # ----------------
 
         # Compiler and linker flags.
         export CC="ccache gcc"
