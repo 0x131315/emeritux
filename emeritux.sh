@@ -818,7 +818,7 @@ uninstall_e23() {
   if [ -f $HOME/.bash_aliases ]; then
     echo
     beep_question
-    read -t 10 -p "Remove the hidden bash_aliases file? [y/N] " answer
+    read -t 10 -p "Remove the hidden bash_aliases file? [Y/n] " answer
     case $answer in
     [yY])
       rm -rf $HOME/.bash_aliases && source $HOME/.bashrc
@@ -827,7 +827,7 @@ uninstall_e23() {
       printf "\n%s\n\n" "(do not delete bash_aliases... OK)"
       ;;
     *)
-      printf "\n%s\n\n" "(do not delete bash_aliases... OK)"
+      rm -rf $HOME/.bash_aliases && source $HOME/.bashrc
       ;;
     esac
   fi
