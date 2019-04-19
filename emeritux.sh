@@ -28,6 +28,9 @@
 # I highly recommend doing a complete uninstall and reinstall of E23 every three weeks or so
 # for an optimal user experience.
 
+# Note that you need to uninstall all E23 GIT programs *before* upgrading your current system to
+# a newer version of Linux Mint.
+
 # EMERITUX.SH is written by similar@orange.fr, feel free to use this script as you see fit.
 # Please consider sending me a tip via https://www.paypal.me/PJGuillaumie
 # or starring this project to show your support.
