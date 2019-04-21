@@ -525,14 +525,6 @@ update_go() {
 
 wld_go() {
   clear
-  if [ $RELEASE == tessa ]; then
-    printf "\n$BDG%s $OFF%s\n\n" "Wayland compatible system."
-    sleep 1
-  else
-    printf "\n$BDR%s $OFF%s\n\n" "UNSUPPORTED OPERATING SYSTEM."
-    beep_exit
-    exit 1
-  fi
 
   if [ ! -d $E23 ]; then
     printf "\n$BDR%s %s\n" "NOTHING TO UPDATE!"
