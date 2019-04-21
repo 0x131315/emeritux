@@ -525,7 +525,6 @@ update_go() {
 
 wld_go() {
   clear
-
   if [ ! -d $E23 ]; then
     printf "\n$BDR%s %s\n" "NOTHING TO UPDATE!"
     printf "$BDR%s $OFF%s\n\n" "SCRIPT ABORTED."
