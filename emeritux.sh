@@ -56,6 +56,7 @@ ICNV=libiconv-1.15
 MVER=0.50.0
 E23=$DOCDIR/sources/enlightenment23
 SCRFLR=$HOME/emeritux
+CONFG="./configure --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
 RELEASE=$(lsb_release -sc)
 DISTRIBUTOR=$(lsb_release -i | cut -f2)
@@ -411,7 +412,7 @@ get_preq() {
   wget -c https://ftp.gnu.org/pub/gnu/libiconv/$ICNV.tar.gz
   tar xzvf $ICNV.tar.gz -C $DOCDIR/sources/
   cd $DOCDIR/sources/$ICNV
-  ./configure
+  $CONFG
   make
   sudo make install
   sudo ldconfig
