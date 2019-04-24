@@ -50,6 +50,7 @@ LTC="\e[0;96m" # Light cyan text.
 BDY="\e[1;33m" # Bold yellow text.
 OFF="\e[0m"    # Turn off ANSI colors and formatting.
 
+PREFIX=/usr/local
 DLDIR=$(xdg-user-dir DOWNLOAD)
 DOCDIR=$(xdg-user-dir DOCUMENTS)
 ICNV=libiconv-1.15
