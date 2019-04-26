@@ -396,10 +396,6 @@ do_bsh_alias() {
         export LDFLAGS=-L/usr/local/lib
         export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
-        # Enable parallel build.
-        # Comment out the line below if you get unusual build errors with other projects.
-        export MAKE="make -j$(($(getconf _NPROCESSORS_ONLN) * 2))"
-
         # This script adds the ~/.local/bin/ directory to your PATH environment variable if required.
 EOF
 
