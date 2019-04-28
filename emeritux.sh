@@ -552,7 +552,7 @@ wld_go() {
         then enter your credentials and type: enlightenment_start" | lolcat -a
     echo
     # When you're done, type exit
-    # Pressing Ctrl-Alt-F7 will bring you back to the login screen
+    # Pressing Ctrl-Alt-F7 will bring you back to the login screen.
   else
     echo
     cowsay -f www "That's it. Now type: enlightenment_start"
