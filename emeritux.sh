@@ -115,7 +115,7 @@ sel_menu() {
     printf "3. $BDY%s $OFF%s\n\n" " Update and rebuild E23 with Wayland support"
     printf "4. $BDR%s $OFF%s\n\n" " Uninstall all E23 git programs"
 
-    sleep 1 && printf "$ITA%s $OFF%s\n\n" "—   Or press Ctrl-C to quit."
+    sleep 1 && printf "$ITA%s $OFF%s\n\n" "—   Or press Ctrl+C to quit."
     read INPUT
   fi
 }
@@ -165,7 +165,7 @@ ls_dir() {
     exit 1
   else
     printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 3 PROGRAMS HAVE BEEN DOWNLOADED!"
-    printf "\n$BDY%s $OFF%s\n\n" "WAIT 10 SECONDS OR HIT CTRL-C TO QUIT."
+    printf "\n$BDY%s $OFF%s\n\n" "WAIT 10 SECONDS OR HIT CTRL+C TO QUIT."
     sleep 10
   fi
 }
@@ -548,11 +548,11 @@ wld_go() {
 
   if [ "$XDG_SESSION_TYPE" == "x11" ] || [ "$XDG_SESSION_TYPE" == "wayland" ]; then
     echo
-    cowsay -f www "Now log out of your existing session and press Ctrl-Alt-F2 to switch to tty2, \
+    cowsay -f www "Now log out of your existing session and press Ctrl+Alt+F2 to switch to tty2, \
         then enter your credentials and type: enlightenment_start" | lolcat -a
     echo
     # When you're done, type exit
-    # Pressing Ctrl-Alt-F7 will bring you back to the login screen.
+    # Pressing Ctrl+Alt+F7 will bring you back to the login screen.
   else
     echo
     cowsay -f www "That's it. Now type: enlightenment_start"
