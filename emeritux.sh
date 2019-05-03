@@ -431,7 +431,7 @@ get_meson() {
   fi
 }
 
-install_go() {
+install_now() {
   clear
   printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP *"
   do_bsh_alias
@@ -850,7 +850,7 @@ main() {
   sel_menu
 
   if [ $INPUT == 1 ]; then
-    install_go
+    install_now
   elif [ $INPUT == 2 ]; then
     update_go
   elif [ $INPUT == 3 ]; then
