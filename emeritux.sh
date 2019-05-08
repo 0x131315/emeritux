@@ -109,7 +109,7 @@ beep_ok() {
 sel_menu() {
   if [ $INPUT -lt 1 ]; then
     echo
-    printf "1. $BDG%s %s\n\n" " Install Enlightenment 23 from git master"
+    printf "1. $BDG%s $OFF%s\n\n" " Install Enlightenment 23 from git master"
     printf "2. $BDG%s $OFF%s\n\n" " Update and rebuild Enlightenment 23" # Best UX (recommended).
     printf "3. $BDY%s $OFF%s\n\n" " Update and rebuild E23 with Wayland support"
     printf "4. $BDR%s $OFF%s\n\n" " Uninstall all E23 git programs"
