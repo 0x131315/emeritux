@@ -46,7 +46,6 @@ BLD="\e[1m"    # Bold text.
 ITA="\e[3m"    # Italic text.
 BDR="\e[1;31m" # Bold red text.
 BDG="\e[1;32m" # Bold green text.
-LTC="\e[0;96m" # Light cyan text.
 BDY="\e[1;33m" # Bold yellow text.
 OFF="\e[0m"    # Turn off ANSI colors and formatting.
 
@@ -110,8 +109,8 @@ beep_ok() {
 sel_menu() {
   if [ $INPUT -lt 1 ]; then
     echo
-    printf "1. $BDG%s $OFF%s\n\n" " Install Enlightenment 23 from git master"
-    printf "2. $LTC%s $OFF%s\n\n" " Update and rebuild Enlightenment 23" # Best UX (recommended).
+    printf "1. $BDG%s %s\n\n" " Install Enlightenment 23 from git master"
+    printf "2. $BDG%s $OFF%s\n\n" " Update and rebuild Enlightenment 23" # Best UX (recommended).
     printf "3. $BDY%s $OFF%s\n\n" " Update and rebuild E23 with Wayland support"
     printf "4. $BDR%s $OFF%s\n\n" " Uninstall all E23 git programs"
 
@@ -499,7 +498,7 @@ update_go() {
     beep_exit
     exit 1
   else
-    printf "\n$LTC%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP *"
+    printf "\n$BDG%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP *"
   fi
 
   cp -f $SCRFLR/emeritux.sh $HOME/.local/bin/
