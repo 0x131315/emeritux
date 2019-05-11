@@ -383,19 +383,19 @@ do_bsh_alias() {
 
     cat >$HOME/.bash_aliases <<EOF
 
-        # GLOBAL VARIABLES
-        # ----------------
+    # GLOBAL VARIABLES
+    # ----------------
 
-        # Compiler and linker flags.
-        export CC="ccache gcc"
-        export CXX="ccache g++"
-        export USE_CCACHE=1
-        export CCACHE_COMPRESS=1
-        export CPPFLAGS=-I/usr/local/include
-        export LDFLAGS=-L/usr/local/lib
-        export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+    # Compiler and linker flags.
+    export CC="ccache gcc"
+    export CXX="ccache g++"
+    export USE_CCACHE=1
+    export CCACHE_COMPRESS=1
+    export CPPFLAGS=-I/usr/local/include
+    export LDFLAGS=-L/usr/local/lib
+    export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
-        # This script adds the ~/.local/bin/ directory to your PATH environment variable if required.
+    # This script adds the ~/.local/bin/ directory to your PATH environment variable if required.
 EOF
 
     source $HOME/.bash_aliases
