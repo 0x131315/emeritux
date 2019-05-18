@@ -571,7 +571,7 @@ remov_preq() {
     echo
     beep_question
     # Questions: Enter either y or n, or press Enter to accept the default values.
-    read -t 10 -p "Remove libiconv installed from tarball? [Y/n] " answer
+    read -t 12 -p "Remove libiconv installed from tarball? [Y/n] " answer
     case $answer in
     [yY])
       echo
@@ -600,7 +600,7 @@ remov_meson() {
   if [ -d $HOME/.local/lib/python3.6/site-packages/mesonbuild/ ]; then
     echo
     beep_question
-    read -t 10 -p "Remove locally installed Meson? [y/N] " answer
+    read -t 12 -p "Remove locally installed Meson? [y/N] " answer
     case $answer in
     [yY])
       echo
@@ -625,7 +625,7 @@ remov_bin_deps() {
   if [ ! -d $HOME/.local/lib/python3.6/site-packages/mesonbuild/ ]; then
     echo
     beep_question
-    read -t 10 -p "Remove binary dependencies (development packages)? [y/N] " answer
+    read -t 12 -p "Remove binary dependencies (development packages)? [y/N] " answer
     case $answer in
     [yY])
       echo
@@ -792,7 +792,7 @@ uninstall_e23() {
   if [ -d $HOME/.ccache/ ]; then
     echo
     beep_question
-    read -t 10 -p "Remove the hidden ccache folder (compiler cache)? [y/N] " answer
+    read -t 12 -p "Remove the hidden ccache folder (compiler cache)? [y/N] " answer
     case $answer in
     [yY])
       rm -rf $HOME/.ccache/
@@ -809,7 +809,7 @@ uninstall_e23() {
   if [ -f $HOME/.bash_aliases ]; then
     echo
     beep_question
-    read -t 10 -p "Remove the hidden bash_aliases file? [Y/n] " answer
+    read -t 12 -p "Remove the hidden bash_aliases file? [Y/n] " answer
     case $answer in
     [yY])
       rm -rf $HOME/.bash_aliases && source $HOME/.bashrc
