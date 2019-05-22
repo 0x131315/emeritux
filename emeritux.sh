@@ -164,8 +164,8 @@ ls_dir() {
     exit 1
   else
     printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 3 PROGRAMS HAVE BEEN DOWNLOADED!"
-    printf "\n$BDY%s $OFF%s\n\n" "WAIT 10 SECONDS OR HIT CTRL+C TO QUIT."
-    sleep 10
+    printf "\n$BDY%s $OFF%s\n\n" "WAIT 12 SECONDS OR HIT CTRL+C TO QUIT."
+    sleep 12
   fi
 }
 
