@@ -670,6 +670,7 @@ uninstall_e23() {
   sudo rm -rf evas*
 
   cd /usr/local/bin/
+  sudo rm -rf eina*
   sudo rm -rf efl*
   sudo rm -rf elua*
   sudo rm -rf eolian*
