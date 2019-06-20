@@ -12,7 +12,7 @@
 # 1. Open Terminal and uncheck "Limit scrollback to" in Edit > Preferences > Scrolling
 # 2. Change (cd) to the download folder
 # 3. Make this script executable with chmod +x
-# 3. Then type ./emeritux.sh
+# 4. Then type ./emeritux.sh
 
 # Subsequent runs.
 # Open Terminal and simply type emeritux.sh
