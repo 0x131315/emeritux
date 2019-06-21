@@ -476,8 +476,8 @@ install_now() {
   beep_ok
 
   printf "\n\n$BDY%s %s" "Enlightenment first time wizard tips:"
-  printf "\n$BDY%s %s" "'Update checking'——you can disable this feature because it serves no useful purpose."
-  printf "\n$BDY%s $OFF%s\n\n\n" "'Network management support'—'—do NOT install Connman!"
+  printf "\n$BDY%s %s" "'Update checking'—— you can disable this feature because it serves no useful purpose."
+  printf "\n$BDY%s $OFF%s\n\n\n" "'Network management support'—— do NOT install Connman!"
   # Enlightenment adds three shortcut icons (namely home.desktop, root.desktop and tmp.desktop)
   # to your Mint Desktop, you can safely delete them.
 
