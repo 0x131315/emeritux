@@ -229,7 +229,7 @@ build_optim() {
     case $I in
     efl)
       meson . build/
-      meson configure -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuildtype=release build/
+      meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuildtype=release build/
       ninja -C build/ || mng_err
       ;;
     enlightenment)
@@ -262,7 +262,7 @@ rebuild_optim() {
     case $I in
     efl)
       sudo chown $USER:$USER build/.ninja*
-      meson configure -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuildtype=release build/
+      meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuildtype=release build/
       ninja -C build/ || mng_err
       ;;
     enlightenment)
@@ -296,7 +296,7 @@ rebuild_wld() {
     case $I in
     efl)
       sudo chown $USER:$USER build/.ninja*
-      meson configure -Dharfbuzz=true -Dbindings=luajit,cxx -Ddrm=true -Dwl=true \
+      meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Ddrm=true -Dwl=true \
         -Dopengl=es-egl -Dbuildtype=release build/
       ninja -C build/ || mng_err
       ;;
