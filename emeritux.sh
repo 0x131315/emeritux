@@ -32,6 +32,8 @@
 # a newer version of Linux Mint.
 
 # EMERITUX.SH is written by similar@orange.fr, feel free to use this script as you see fit.
+# Before reporting an issue, make sure you are using the latest version.
+
 # Please consider sending me a tip via https://www.paypal.me/PJGuillaumie
 # or starring this project to show your support.
 # Cheers!
