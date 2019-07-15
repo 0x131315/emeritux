@@ -720,38 +720,6 @@ uninstall_e23() {
   sudo rm -rf libethumb*
   sudo rm -rf libevas*
 
-  cd /usr/local/lib/pkgconfig/ &>/dev/null
-  sudo rm -rf ecore*
-  sudo rm -rf edje*
-  sudo rm -rf eet*
-  sudo rm -rf efl*
-  sudo rm -rf eina*
-  sudo rm -rf eio*
-  sudo rm -rf elementary*
-  sudo rm -rf elput*
-  sudo rm -rf elua*
-  sudo rm -rf eo*
-  sudo rm -rf eolian*
-  sudo rm -rf evas*
-
-  cd /usr/local/lib/cmake/ &>/dev/null
-  sudo rm -rf Ecore*
-  sudo rm -rf Edje*
-  sudo rm -rf Eet*
-  sudo rm -rf Eeze*
-  sudo rm -rf Efl*
-  sudo rm -rf Efreet*
-  sudo rm -rf Eina*
-  sudo rm -rf Eio*
-  sudo rm -rf Eldbus*
-  sudo rm -rf Elementary*
-  sudo rm -rf Elua*
-  sudo rm -rf Emile*
-  sudo rm -rf Emotion*
-  sudo rm -rf Eo*
-  sudo rm -rf Ethumb*
-  sudo rm -rf Evas*
-
   cd /usr/local/share/
   sudo rm -rf dbus*
   sudo rm -rf ecore*
