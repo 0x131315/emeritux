@@ -92,6 +92,14 @@ PROG_MN="efl enlightenment terminology"
 # FUNCTIONS
 # ---------
 
+zen_warn() {
+  zenity --no-wrap --info --text "
+  This installation will take up about 1.5 GB of space.\n
+  Keep in mind that running other applications\n\
+  during the build process will affect\n\
+  compilation time.\n"
+}
+
 beep_attention() {
   paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 }
@@ -433,6 +441,8 @@ get_meson() {
 install_now() {
   clear
   printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP *"
+  beep_attention
+  zen_warn 2>/dev/null
   do_bsh_alias
   bin_deps
 
