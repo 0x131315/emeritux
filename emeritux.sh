@@ -38,7 +38,7 @@
 # or starring this project to show your support.
 # Cheers!
 
-# Repositories and gists: https://github.com/batden
+# GitHub repositories: https://github.com/batden
 # Eyecandy for your Enlightenment desktop: https://extra.enlightenment.org/
 
 # LOCAL VARIABLES
