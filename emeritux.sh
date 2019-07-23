@@ -667,7 +667,7 @@ uninstall_e23() {
   rm -rf .e/
   rm -rf .elementary/
   rm -rf .cache/efreet/
-  rm -rf .cache/evas_gl_common_caches//
+  rm -rf .cache/evas_gl_common_caches/
   rm -rf .config/terminology/
 
   cd /usr/local/
