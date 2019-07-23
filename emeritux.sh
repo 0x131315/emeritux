@@ -286,6 +286,7 @@ rebuild_optim() {
       ;;
     esac
 
+    beep_attention
     $SNIN || true
     sudo ldconfig
 
@@ -321,6 +322,7 @@ rebuild_wld() {
       ;;
     esac
 
+    beep_attention
     $SNIN || true
     sudo ldconfig
 
