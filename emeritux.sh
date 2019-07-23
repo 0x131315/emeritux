@@ -229,7 +229,6 @@ build_optim() {
     chk_path
   fi
 
-  beep_attention
   intl_lnk
 
   for I in $PROG_MN; do
