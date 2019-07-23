@@ -590,6 +590,7 @@ remov_preq() {
       sudo make uninstall
       make maintainer-clean
       cd .. && rm -rf $DOCDIR/sources/$ICNV
+      sudo rm -rf /usr/local/bin/iconv
       echo
       ;;
     [nN])
@@ -601,6 +602,7 @@ remov_preq() {
       sudo make uninstall
       make maintainer-clean
       cd .. && rm -rf $DOCDIR/sources/$ICNV
+      sudo rm -rf /usr/local/bin/iconv
       echo
       ;;
     esac
