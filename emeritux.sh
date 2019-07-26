@@ -61,7 +61,6 @@ SCRFLR=$HOME/emeritux
 CONFG="./configure --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
 RELEASE=$(lsb_release -sc)
-DISTRIBUTOR=$(lsb_release -i | cut -f2)
 
 # Build dependencies, recommended and script-related packages.
 DEPS="aspell automake build-essential ccache check cmake cowsay \
@@ -352,12 +351,6 @@ do_tests() {
     sleep 1
   else
     printf "\n$BDR%s $OFF%s\n\n" "UNSUPPORTED OPERATING SYSTEM [ $(lsb_release -d | cut -f2) ]."
-    beep_exit
-    exit 1
-  fi
-
-  if [ "$(pidof enlightenment)" ]; then
-    printf "\n$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO ${DISTRIBUTOR^^} TO EXECUTE THIS SCRIPT."
     beep_exit
     exit 1
   fi
