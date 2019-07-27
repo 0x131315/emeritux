@@ -256,6 +256,13 @@ build_optim() {
     $SNIN || true
     sudo ldconfig
   done
+
+  printf "\n$BLD%s $OFF%s\n\n" "Building rlottie..."
+  cd $DOCDIR/sources/rlottie
+  meson . build/
+  ninja -C build/ || true
+  $SNIN || true
+  sudo ldconfig
 }
 
 rebuild_optim() {
@@ -406,7 +413,7 @@ EOF
 
 get_preq() {
   cd $DLDIR
-  printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites..."
+  printf "\n\n$BLD%s $OFF%s\n\n" "Downloading prerequisites..."
   wget -c https://ftp.gnu.org/pub/gnu/libiconv/$ICNV.tar.gz
   tar xzvf $ICNV.tar.gz -C $DOCDIR/sources/
   cd $DOCDIR/sources/$ICNV
@@ -416,6 +423,12 @@ get_preq() {
   sudo ldconfig
   rm -rf $DLDIR/$ICNV.tar.gz
   echo
+
+  if [ ! -d $DOCDIR/sources/rlottie ]; then
+    cd $DOCDIR/sources
+    git clone https://github.com/Samsung/rlottie.git
+    echo
+  fi
 }
 
 get_meson() {
@@ -575,7 +588,7 @@ remov_preq() {
     echo
     beep_question
     # Questions: Enter either y or n, or press Enter to accept the default values.
-    read -t 12 -p "Remove libiconv installed from tarball? [Y/n] " answer
+    read -t 12 -p "Remove libiconv and rlottie? [Y/n] " answer
     case $answer in
     [yY])
       echo
@@ -585,9 +598,14 @@ remov_preq() {
       cd .. && rm -rf $DOCDIR/sources/$ICNV
       sudo rm -rf /usr/local/bin/iconv
       echo
+
+      cd $DOCDIR/sources/rlottie/
+      sudo ninja -C build/ uninstall
+      cd .. && rm -rf rlottie/
+      echo
       ;;
     [nN])
-      printf "\n%s\n\n" "(do not remove libiconv... OK)"
+      printf "\n%s\n\n" "(do not remove prerequisites... OK)"
       ;;
     *)
       echo
@@ -596,6 +614,11 @@ remov_preq() {
       make maintainer-clean
       cd .. && rm -rf $DOCDIR/sources/$ICNV
       sudo rm -rf /usr/local/bin/iconv
+      echo
+
+      cd $DOCDIR/sources/rlottie/
+      sudo ninja -C build/ uninstall
+      cd .. && rm -rf rlottie/
       echo
       ;;
     esac
