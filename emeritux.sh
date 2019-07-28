@@ -491,6 +491,9 @@ install_now() {
   gio set $DOCDIR/sources/$ICNV metadata::custom-icon \
     file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
 
+  gio set $DOCDIR/sources/rlottie/ metadata::custom-icon \
+    file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
+
   sudo updatedb
   beep_ok
 
