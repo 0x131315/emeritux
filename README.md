@@ -2,7 +2,7 @@
 
 A neat Bash script to build and install Enlightenment 23 on **Linux Mint Tessa**.  
 
-## **Get started**
+## Get started
 
 Make sure that the `build-essential` and `git` packages are installed, then open Terminal and clone this repository:
 
@@ -34,7 +34,7 @@ emeritux.sh
 
 (Use tab completion: Just type  _eme_  and press Tab)
 
-### **Update local repository**
+### Update local repository
 
 Be sure to check for updates at least once a week.
 
