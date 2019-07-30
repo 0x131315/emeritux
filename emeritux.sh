@@ -80,7 +80,7 @@ libxcb-keysyms1-dev libxcursor-dev libxine2-dev libxinerama-dev \
 libxkbcommon-x11-dev libxkbfile-dev libxrandr-dev libxss-dev \
 libxtst-dev linux-tools-common manpages-dev lolcat \
 python3-setuptools python3-wheel texlive-base valgrind \
-wmctrl xserver-xephyr xwayland"
+wmctrl xserver-xephyr xwayland zenity"
 
 # Programs from GIT repositories (latest source code).
 CLONEFL="git clone https://git.enlightenment.org/core/efl.git"
