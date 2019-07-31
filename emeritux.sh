@@ -654,8 +654,8 @@ remov_meson() {
 
 # Think twice before proceeding with the removal of these packages,
 # please review them carefully. If in doubt, take a screenshot
-# first for future reference or keep the currently installed
-# set of development packages.
+# first for future reference, or better yet, keep the
+# currently installed set of development packages.
 remov_bin_deps() {
   if [ ! -d $HOME/.local/lib/python3.6/site-packages/mesonbuild/ ]; then
     echo
