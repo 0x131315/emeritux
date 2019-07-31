@@ -639,7 +639,7 @@ remov_meson() {
     case $answer in
     [yY])
       echo
-      pip3 uninstall meson
+      pip3 uninstall --yes meson
       echo
       ;;
     [nN])
