@@ -3,8 +3,8 @@
 # EMERITUX.SH
 
 # This Bash script allows you to safely and easily download, install, update the GIT master version
-# of Enlightenment 0.23 (aka E23) on Linux Mint Tessa; or helps you perform a clean uninstall
-# of E23 GIT.
+# of Enlightenment 0.23 (aka E23) on Linux Mint Tessa & Tina; or helps you perform a clean
+# uninstall of E23 GIT.
 
 # To execute the script:
 
@@ -353,7 +353,7 @@ do_tests() {
     exit 1
   fi
 
-  if [ $RELEASE == tessa ]; then
+  if [ $RELEASE == tessa ] || [ $RELEASE == tina ]; then
     printf "\n$BDG%s $OFF%s\n\n" "Linux Mint ${RELEASE^}... OK"
     sleep 1
   else
