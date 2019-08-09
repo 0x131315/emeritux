@@ -237,7 +237,8 @@ build_optim() {
     case $I in
     efl)
       meson . build/
-      meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuildtype=release build/
+      meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuild-tests=false \
+        -Dbuildtype=release build/
       ninja -C build/ || mng_err
       ;;
     enlightenment)
@@ -266,6 +267,19 @@ build_optim() {
 }
 
 rebuild_optim() {
+  elap_start
+
+  cd $DOCDIR/sources/rlottie/
+  printf "\n$BLD%s $OFF%s\n\n" "Updating rlottie..."
+  git reset --hard &>/dev/null
+  git pull
+  meson --reconfigure build/
+  ninja -C build/ || true
+  $SNIN || true
+  sudo ldconfig
+
+  elap_stop
+
   for I in $PROG_MN; do
     elap_start
 
@@ -277,7 +291,8 @@ rebuild_optim() {
     case $I in
     efl)
       sudo chown $USER:$USER build/.ninja*
-      meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuildtype=release build/
+      meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuild-tests=false \
+        -Dbuildtype=release build/
       ninja -C build/ || mng_err
       ;;
     enlightenment)
@@ -301,6 +316,19 @@ rebuild_optim() {
 }
 
 rebuild_wld() {
+  elap_start
+
+  cd $DOCDIR/sources/rlottie/
+  printf "\n$BLD%s $OFF%s\n\n" "Updating rlottie..."
+  git reset --hard &>/dev/null
+  git pull
+  meson --reconfigure build/
+  ninja -C build/ || true
+  $SNIN || true
+  sudo ldconfig
+
+  elap_stop
+
   for I in $PROG_MN; do
     elap_start
 
@@ -313,7 +341,7 @@ rebuild_wld() {
     efl)
       sudo chown $USER:$USER build/.ninja*
       meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Ddrm=true -Dwl=true \
-        -Dopengl=es-egl -Dbuildtype=release build/
+        -Dopengl=es-egl -Dbuild-tests=false -Dbuildtype=release build/
       ninja -C build/ || mng_err
       ;;
     enlightenment)
