@@ -197,7 +197,7 @@ intl_lnk() {
     sudo ln -sf /usr/lib/x86_64-linux-gnu/preloadable_libintl.so /usr/lib/libintl.so
     sudo ldconfig
   elif [ $(uname -m) == i686 ]; then
-    sudo ln -sf /usr/lib/i386-linux-gnu/preloadable_libintl.so /usr/lib/libintl.so.8
+    sudo ln -sf /usr/lib/i386-linux-gnu/preloadable_libintl.so /usr/lib/libgnuintl.so.8
     sudo ln -sf /usr/lib/i386-linux-gnu/preloadable_libintl.so /usr/lib/libintl.so
     sudo ldconfig
   else
