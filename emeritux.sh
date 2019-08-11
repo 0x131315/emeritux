@@ -346,7 +346,7 @@ rebuild_wld() {
       ;;
     enlightenment)
       sudo chown $USER:$USER build/.ninja*
-      meson configure -Dwayland=true -Dbuildtype=release build/
+      meson configure -Dwl=true -Dbuildtype=release build/
       ninja -C build/ || mng_err
       ;;
     *)
