@@ -491,7 +491,7 @@ install_now() {
   mkdir -p $E23
   cd $E23
 
-  printf "\n\n$BLD%s $OFF%s\n\n" "Fetching git code..."
+  printf "\n\n$BLD%s $OFF%s\n\n" "Fetching source code from the Enlightened git repositories..."
   $CLONEFL
   echo
   $CLONETY
