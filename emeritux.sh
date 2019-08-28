@@ -261,7 +261,7 @@ build_optim() {
   printf "\n$BLD%s $OFF%s\n\n" "Building rlottie..."
   cd $DOCDIR/sources/rlottie
   meson . build/
-  meson configure -Dbuild-example=false -Dbuildtype=release build/
+  meson configure -Dbuild-examples=false -Dbuildtype=release build/
   ninja -C build/ || true
   $SNIN || true
   sudo ldconfig
