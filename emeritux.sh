@@ -261,7 +261,7 @@ build_optim() {
   printf "\n$BLD%s $OFF%s\n\n" "Building rlottie..."
   cd $DOCDIR/sources/rlottie
   meson . build/
-  meson configure -Dbuild-examples=false -Dbuildtype=release build/
+  meson configure -Dexample=false -Dbuildtype=release build/
   ninja -C build/ || true
   $SNIN || true
   sudo ldconfig
@@ -276,7 +276,7 @@ rebuild_optim() {
   git pull
 
   sudo chown $USER:$USER build/.ninja*
-  meson configure -Dbuild-examples=false -Dbuildtype=release build/
+  meson configure -Dexample=false -Dbuildtype=release build/
   ninja -C build/ || true
   $SNIN || true
   sudo ldconfig
@@ -327,7 +327,7 @@ rebuild_wld() {
   git pull
 
   sudo chown $USER:$USER build/.ninja*
-  meson configure -Dbuild-examples=false -Dbuildtype=release build/
+  meson configure -Dexample=false -Dbuildtype=release build/
   ninja -C build/ || true
   $SNIN || true
   sudo ldconfig
