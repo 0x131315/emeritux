@@ -261,6 +261,7 @@ build_optim() {
   printf "\n$BLD%s $OFF%s\n\n" "Building rlottie..."
   cd $DOCDIR/sources/rlottie
   meson . build/
+  meson configure -Dbuild-example=false -Dbuildtype=release build/
   ninja -C build/ || true
   $SNIN || true
   sudo ldconfig
@@ -273,7 +274,9 @@ rebuild_optim() {
   printf "\n$BLD%s $OFF%s\n\n" "Updating rlottie..."
   git reset --hard &>/dev/null
   git pull
-  meson --reconfigure build/
+
+  sudo chown $USER:$USER build/.ninja*
+  meson configure -Dbuild-examples=false -Dbuildtype=release build/
   ninja -C build/ || true
   $SNIN || true
   sudo ldconfig
@@ -322,7 +325,9 @@ rebuild_wld() {
   printf "\n$BLD%s $OFF%s\n\n" "Updating rlottie..."
   git reset --hard &>/dev/null
   git pull
-  meson --reconfigure build/
+
+  sudo chown $USER:$USER build/.ninja*
+  meson configure -Dbuild-examples=false -Dbuildtype=release build/
   ninja -C build/ || true
   $SNIN || true
   sudo ldconfig
