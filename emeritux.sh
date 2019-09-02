@@ -480,7 +480,7 @@ get_meson() {
 
 install_now() {
   clear
-  printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP *"
+  printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP: RELEASE BUILD *"
   beep_attention
   zen_warn 2>/dev/null
   do_bsh_alias
@@ -554,7 +554,7 @@ update_go() {
     beep_exit
     exit 1
   else
-    printf "\n$BDG%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP *"
+    printf "\n$BDG%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP: RELEASE BUILD *"
   fi
 
   cp -f $SCRFLR/emeritux.sh $HOME/.local/bin/
@@ -584,7 +584,7 @@ wld_go() {
     beep_exit
     exit 1
   else
-    printf "\n$BDY%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP *"
+    printf "\n$BDY%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP: WAYLAND BUILD *"
   fi
 
   cp -f $SCRFLR/emeritux.sh $HOME/.local/bin/
