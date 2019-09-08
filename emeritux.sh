@@ -452,8 +452,8 @@ get_preq() {
   cd $DOCDIR/sources/rlottie
   meson . build/
   meson configure -Dexample=false -Dbuildtype=release build/
-  ninja -C build/ || true
-  $SNIN || true
+  ninja -C build/ || mng_err
+  $SNIN || mng_err
   sudo ldconfig
   echo
 }
