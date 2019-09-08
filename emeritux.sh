@@ -257,14 +257,6 @@ build_optim() {
     $SNIN || true
     sudo ldconfig
   done
-
-  printf "\n$BLD%s $OFF%s\n\n" "Building rlottie..."
-  cd $DOCDIR/sources/rlottie
-  meson . build/
-  meson configure -Dexample=false -Dbuildtype=release build/
-  ninja -C build/ || true
-  $SNIN || true
-  sudo ldconfig
 }
 
 rebuild_optim() {
@@ -274,7 +266,6 @@ rebuild_optim() {
   printf "\n$BLD%s $OFF%s\n\n" "Updating rlottie..."
   git reset --hard &>/dev/null
   git pull
-
   sudo chown $USER:$USER build/.ninja*
   meson configure -Dexample=false -Dbuildtype=release build/
   ninja -C build/ || true
@@ -325,7 +316,6 @@ rebuild_wld() {
   printf "\n$BLD%s $OFF%s\n\n" "Updating rlottie..."
   git reset --hard &>/dev/null
   git pull
-
   sudo chown $USER:$USER build/.ninja*
   meson configure -Dexample=false -Dbuildtype=release build/
   ninja -C build/ || true
@@ -446,7 +436,7 @@ EOF
 
 get_preq() {
   cd $DLDIR
-  printf "\n\n$BLD%s $OFF%s\n\n" "Downloading prerequisites..."
+  printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites..."
   wget -c https://ftp.gnu.org/pub/gnu/libiconv/$ICNV.tar.gz
   tar xzvf $ICNV.tar.gz -C $DOCDIR/sources/
   cd $DOCDIR/sources/$ICNV
@@ -457,11 +447,15 @@ get_preq() {
   rm -rf $DLDIR/$ICNV.tar.gz
   echo
 
-  if [ ! -d $DOCDIR/sources/rlottie ]; then
-    cd $DOCDIR/sources
-    git clone https://github.com/Samsung/rlottie.git
-    echo
-  fi
+  cd $DOCDIR/sources
+  git clone https://github.com/Samsung/rlottie.git
+  cd $DOCDIR/sources/rlottie
+  meson . build/
+  meson configure -Dexample=false -Dbuildtype=release build/
+  ninja -C build/ || true
+  $SNIN || true
+  sudo ldconfig
+  echo
 }
 
 get_meson() {
@@ -485,11 +479,7 @@ install_now() {
   zen_warn 2>/dev/null
   do_bsh_alias
   bin_deps
-
-  if [ ! -f /usr/local/bin/iconv ]; then
-    get_preq
-  fi
-
+  get_preq
   get_meson
 
   cd $HOME
