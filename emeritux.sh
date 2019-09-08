@@ -434,6 +434,20 @@ EOF
   fi
 }
 
+get_meson() {
+  if [ ! -d $HOME/.local/lib/python3.6/site-packages/mesonbuild/ ]; then
+    sudo apt install --yes ninja-build python3-pip && pip3 install --user meson==$MVER
+    if [ "$?" == 0 ]; then
+      if ! echo $PATH | grep -q $HOME/.local/bin; then
+        echo -e '    export PATH=$HOME/.local/bin:$PATH' >>$HOME/.bash_aliases
+        source $HOME/.bash_aliases
+      else
+        true
+      fi
+    fi
+  fi
+}
+
 get_preq() {
   cd $DLDIR
   printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites..."
@@ -458,20 +472,6 @@ get_preq() {
   echo
 }
 
-get_meson() {
-  if [ ! -d $HOME/.local/lib/python3.6/site-packages/mesonbuild/ ]; then
-    sudo apt install --yes ninja-build python3-pip && pip3 install --user meson==$MVER
-    if [ "$?" == 0 ]; then
-      if ! echo $PATH | grep -q $HOME/.local/bin; then
-        echo -e '    export PATH=$HOME/.local/bin:$PATH' >>$HOME/.bash_aliases
-        source $HOME/.bash_aliases
-      else
-        true
-      fi
-    fi
-  fi
-}
-
 install_now() {
   clear
   printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP: RELEASE BUILD *"
@@ -479,8 +479,8 @@ install_now() {
   zen_warn 2>/dev/null
   do_bsh_alias
   bin_deps
-  get_preq
   get_meson
+  get_preq
 
   cd $HOME
   mkdir -p $E23
