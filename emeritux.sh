@@ -449,18 +449,7 @@ get_meson() {
 }
 
 get_preq() {
-  cd $DLDIR
   printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites..."
-  wget -c https://ftp.gnu.org/pub/gnu/libiconv/$ICNV.tar.gz
-  tar xzvf $ICNV.tar.gz -C $DOCDIR/sources/
-  cd $DOCDIR/sources/$ICNV
-  $CONFG
-  make
-  sudo make install
-  sudo ldconfig
-  rm -rf $DLDIR/$ICNV.tar.gz
-  echo
-
   cd $DOCDIR/sources
   git clone https://github.com/Samsung/rlottie.git
   cd $DOCDIR/sources/rlottie
@@ -614,44 +603,36 @@ remov_eprog_mn() {
 
 remov_preq() {
   if [ -d $DOCDIR/sources/$ICNV ]; then
-    echo
-    beep_question
-    # Questions: Enter either y or n, or press Enter to accept the default values.
-    read -t 12 -p "Remove libiconv and rlottie? [Y/n] " answer
-    case $answer in
-    [yY])
-      echo
-      cd $DOCDIR/sources/$ICNV
-      sudo make uninstall
-      make maintainer-clean
-      cd .. && rm -rf $DOCDIR/sources/$ICNV
-      sudo rm -rf /usr/local/bin/iconv
-      echo
-
-      cd $DOCDIR/sources/rlottie/
-      sudo ninja -C build/ uninstall
-      cd .. && rm -rf rlottie/
-      echo
-      ;;
-    [nN])
-      printf "\n%s\n\n" "(do not remove prerequisites... OK)"
-      ;;
-    *)
-      echo
-      cd $DOCDIR/sources/$ICNV
-      sudo make uninstall
-      make maintainer-clean
-      cd .. && rm -rf $DOCDIR/sources/$ICNV
-      sudo rm -rf /usr/local/bin/iconv
-      echo
-
-      cd $DOCDIR/sources/rlottie/
-      sudo ninja -C build/ uninstall
-      cd .. && rm -rf rlottie/
-      echo
-      ;;
-    esac
+    cd $DOCDIR/sources/$ICNV
+    sudo make uninstall
+    make maintainer-clean
+    cd .. && rm -rf $DOCDIR/sources/$ICNV
+    sudo rm -rf /usr/local/bin/iconv
   fi
+
+  echo
+  beep_question
+  # Questions: Enter either y or n, or press Enter to accept the default values.
+  read -t 12 -p "Remove rlottie? [Y/n] " answer
+  case $answer in
+  [yY])
+    echo
+    cd $DOCDIR/sources/rlottie/
+    sudo ninja -C build/ uninstall
+    cd .. && rm -rf rlottie/
+    echo
+    ;;
+  [nN])
+    printf "\n%s\n\n" "(do not remove rlottie... OK)"
+    ;;
+  *)
+    echo
+    cd $DOCDIR/sources/rlottie/
+    sudo ninja -C build/ uninstall
+    cd .. && rm -rf rlottie/
+    echo
+    ;;
+  esac
 }
 
 remov_meson() {
