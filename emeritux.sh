@@ -3,7 +3,7 @@
 # EMERITUX.SH
 
 # This Bash script allows you to safely and easily download, install, update the GIT master version
-# of Enlightenment 0.23 (aka E23) on Linux Mint Tessa & Tina; or helps you perform a clean
+# of Enlightenment 0.23 (aka E23) on Linux Mint Tina; or helps you perform a clean
 # uninstall of E23 GIT.
 
 # To execute the script:
@@ -54,7 +54,7 @@ OFF="\e[0m"    # Turn off ANSI colors and formatting.
 PREFIX=/usr/local
 DLDIR=$(xdg-user-dir DOWNLOAD)
 DOCDIR=$(xdg-user-dir DOCUMENTS)
-ICNV=libiconv-1.15
+ICNV=libiconv-1.16
 MVER=0.50.0
 E23=$DOCDIR/sources/enlightenment23
 SCRFLR=$HOME/emeritux
@@ -69,16 +69,15 @@ libavahi-client-dev libblkid-dev libbluetooth-dev libbullet-dev \
 libcogl-gles2-dev libexif-dev libfontconfig1-dev libfreetype6-dev \
 libfribidi-dev libgeoclue-2-dev libgif-dev libcurl4-gnutls-dev \
 libgnutls28-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
-libharfbuzz-dev libibus-1.0-dev libiconv-hook-dev libinput-dev \
-libjpeg-dev libblkid-dev libluajit-5.1-dev liblz4-dev libmount-dev \
-libopenjp2-7-dev libpam0g-dev libpoppler-cpp-dev libpoppler-dev \
-libpoppler-private-dev libproxy-dev libpulse-dev libraw-dev \
-librsvg2-dev libscim-dev libsndfile1-dev libspectre-dev libssl-dev \
-libsystemd-dev libtiff5-dev libtool libudev-dev libudisks2-dev \
-libunibreak-dev libunwind-dev libuv1-dev libvlc-dev libwebp-dev \
-libxcb-keysyms1-dev libxcursor-dev libxine2-dev libxinerama-dev \
-libxkbcommon-x11-dev libxkbfile-dev libxrandr-dev libxss-dev \
-libxtst-dev linux-tools-common manpages-dev lolcat \
+libharfbuzz-dev libibus-1.0-dev libinput-dev libjpeg-dev libblkid-dev \
+libluajit-5.1-dev liblz4-dev libmount-dev libopenjp2-7-dev libpam0g-dev \
+libpoppler-cpp-dev libpoppler-dev libpoppler-private-dev libproxy-dev \
+libpulse-dev libraw-dev librsvg2-dev libscim-dev libsndfile1-dev \
+libspectre-dev libssl-dev libsystemd-dev libtiff5-dev libtool \
+libudev-dev libudisks2-dev libunibreak-dev libunwind-dev libuv1-dev \
+libvlc-dev libwebp-dev libxcb-keysyms1-dev libxcursor-dev libxine2-dev \
+libxinerama-dev libxkbcommon-x11-dev libxkbfile-dev libxrandr-dev \
+libxss-dev libxtst-dev linux-tools-common manpages-dev lolcat \
 python3-setuptools python3-wheel texlive-base valgrind \
 wmctrl xserver-xephyr xwayland zenity"
 
@@ -217,6 +216,42 @@ elap_stop() {
   printf ""%dh:%dm:%ds"\n\n" $(($DELTA / 3600)) $(($DELTA % 3600 / 60)) $(($DELTA % 60))
 }
 
+e_bkp() {
+  # Timestamp: See man date to convert epoch to human readable date.
+  TSTAMP=$(date +%s)
+  mkdir -p $DOCDIR/ebackups/
+
+  gio set $DOCDIR/ebackups/ metadata::custom-icon \
+    file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
+
+  mkdir $DOCDIR/ebackups/E_$TSTAMP
+  cp -aR $HOME/.elementary $DOCDIR/ebackups/E_$TSTAMP && cp -aR $HOME/.e $DOCDIR/ebackups/E_$TSTAMP
+  sleep 2
+}
+
+e_tokens() {
+  echo $(date +%s) >>$HOME/.cache/ebuilds/etokens
+
+  TOKEN=$(wc -l <$HOME/.cache/ebuilds/etokens)
+  if [ "$TOKEN" -gt 3 ]; then
+    echo
+    # Questions: Enter either y or n, or press Enter to accept the default values.
+    beep_question
+    read -t 12 -p "Do you want to back up your E23 settings now? [y/N] " answer
+    case $answer in
+    [yY])
+      e_bkp
+      ;;
+    [nN])
+      printf "%s\n\n" "(do not back up my user settings and themes folders... OK)"
+      ;;
+    *)
+      printf "%s\n\n" "(do not back up my user settings and themes folders... OK)"
+      ;;
+    esac
+  fi
+}
+
 build_optim() {
   which meson &>/dev/null || pip3 install --user meson==$MVER
   if [ "$?" -ne 0 ]; then
@@ -260,6 +295,7 @@ build_optim() {
 }
 
 rebuild_optim() {
+  e_tokens
   elap_start
 
   cd $DOCDIR/sources/rlottie/
@@ -310,6 +346,7 @@ rebuild_optim() {
 }
 
 rebuild_wld() {
+  e_tokens
   elap_start
 
   cd $DOCDIR/sources/rlottie/
@@ -376,7 +413,7 @@ do_tests() {
     exit 1
   fi
 
-  if [ $RELEASE == tessa ] || [ $RELEASE == tina ]; then
+  if [ $RELEASE == tina ]; then
     printf "\n$BDG%s $OFF%s\n\n" "Linux Mint ${RELEASE^}... OK"
     sleep 1
   else
@@ -406,6 +443,13 @@ do_tests() {
 
   if [ ! -d $HOME/.local/bin/ ]; then
     mkdir -p $HOME/.local/bin/
+  fi
+
+  if [ ! -d $HOME/.cache/ebuilds/ ]; then
+    mkdir -p $HOME/.cache/ebuilds/
+
+    gio set $HOME/.cache/ebuilds/ metadata::custom-icon \
+      file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
   fi
 }
 
@@ -449,7 +493,18 @@ get_meson() {
 }
 
 get_preq() {
+  cd $DLDIR
   printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites..."
+  wget -c https://ftp.gnu.org/pub/gnu/libiconv/$ICNV.tar.gz
+  tar xzvf $ICNV.tar.gz -C $DOCDIR/sources/
+  cd $DOCDIR/sources/$ICNV
+  $CONFG
+  make
+  sudo make install
+  sudo ldconfig
+  rm -rf $DLDIR/$ICNV.tar.gz
+  echo
+
   cd $DOCDIR/sources
   git clone https://github.com/Samsung/rlottie.git
   cd $DOCDIR/sources/rlottie
@@ -501,6 +556,9 @@ install_now() {
     file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
 
   gio set $E23 metadata::custom-icon \
+    file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
+
+  gio set $DOCDIR/sources/$ICNV metadata::custom-icon \
     file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
 
   gio set $DOCDIR/sources/rlottie/ metadata::custom-icon \
@@ -600,36 +658,44 @@ remov_eprog_mn() {
 
 remov_preq() {
   if [ -d $DOCDIR/sources/$ICNV ]; then
-    cd $DOCDIR/sources/$ICNV
-    sudo make uninstall
-    make maintainer-clean
-    cd .. && rm -rf $DOCDIR/sources/$ICNV
-    sudo rm -rf /usr/local/bin/iconv
-  fi
+    echo
+    beep_question
+    # Questions: Enter either y or n, or press Enter to accept the default values.
+    read -t 12 -p "Remove libiconv and rlottie? [Y/n] " answer
+    case $answer in
+    [yY])
+      echo
+      cd $DOCDIR/sources/$ICNV
+      sudo make uninstall
+      make maintainer-clean
+      cd .. && rm -rf $DOCDIR/sources/$ICNV
+      sudo rm -rf /usr/local/bin/iconv
+      echo
 
-  echo
-  beep_question
-  # Questions: Enter either y or n, or press Enter to accept the default values.
-  read -t 12 -p "Remove rlottie? [Y/n] " answer
-  case $answer in
-  [yY])
-    echo
-    cd $DOCDIR/sources/rlottie/
-    sudo ninja -C build/ uninstall
-    cd .. && rm -rf rlottie/
-    echo
-    ;;
-  [nN])
-    printf "\n%s\n\n" "(do not remove rlottie... OK)"
-    ;;
-  *)
-    echo
-    cd $DOCDIR/sources/rlottie/
-    sudo ninja -C build/ uninstall
-    cd .. && rm -rf rlottie/
-    echo
-    ;;
-  esac
+      cd $DOCDIR/sources/rlottie/
+      sudo ninja -C build/ uninstall
+      cd .. && rm -rf rlottie/
+      echo
+      ;;
+    [nN])
+      printf "\n%s\n\n" "(do not remove prerequisites... OK)"
+      ;;
+    *)
+      echo
+      cd $DOCDIR/sources/$ICNV
+      sudo make uninstall
+      make maintainer-clean
+      cd .. && rm -rf $DOCDIR/sources/$ICNV
+      sudo rm -rf /usr/local/bin/iconv
+      echo
+
+      cd $DOCDIR/sources/rlottie/
+      sudo ninja -C build/ uninstall
+      cd .. && rm -rf rlottie/
+      echo
+      ;;
+    esac
+  fi
 }
 
 remov_meson() {
