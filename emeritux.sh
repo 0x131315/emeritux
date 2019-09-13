@@ -757,6 +757,7 @@ uninstall_e23() {
   rm -rf $SCRFLR
   rm -rf .e/
   rm -rf .elementary/
+  rm -rf .cache/ebuilds/
   rm -rf .cache/efreet/
   rm -rf .cache/evas_gl_common_caches/
   rm -rf .config/terminology/
