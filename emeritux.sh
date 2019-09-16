@@ -2,9 +2,8 @@
 
 # EMERITUX.SH
 
-# This Bash script allows you to safely and easily download, install, update the GIT master version
-# of Enlightenment 0.23 (aka E23) on Linux Mint Tina; or helps you perform a clean
-# uninstall of E23 GIT.
+# This Bash script allows you to safely and easily download, install or update Enlightenment 0.23 (aka E23)
+# on Linux Mint Tina; or helps you perform a clean uninstall of E23.
 
 # To execute the script:
 
@@ -28,7 +27,7 @@
 # I highly recommend doing a complete uninstall and reinstall of E23 every three weeks or so
 # for an optimal user experience.
 
-# Note that you need to uninstall all E23 GIT programs *before* upgrading your current system to
+# Note that you need to uninstall all E23 programs *before* upgrading your current system to
 # a newer version of Linux Mint.
 
 # EMERITUX.SH is written by similar@orange.fr, feel free to use this script as you see fit.
