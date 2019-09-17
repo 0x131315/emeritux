@@ -402,7 +402,7 @@ do_tests() {
     fi
   fi
 
-  printf "\n\n$BLD%s $OFF%s\n" "SCANNING SYSTEM AND GIT REPOSITORIES..."
+  printf "\n\n$BLD%s $OFF%s\n" "SYSTEM CHECK..."
   sleep 1
 
   if systemd-detect-virt -q --container; then
