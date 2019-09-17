@@ -119,7 +119,7 @@ sel_menu() {
     printf "1. $BDG%s $OFF%s\n\n" " Install Enlightenment 23 from git master branch"
     printf "2. $BDG%s $OFF%s\n\n" " Update and rebuild Enlightenment 23"         # Best user experience.
     printf "3. $BDY%s $OFF%s\n\n" " Update and rebuild E23 with Wayland support" # Experimental.
-    printf "4. $BDR%s $OFF%s\n\n" " Uninstall all E23 git programs"
+    printf "4. $BDR%s $OFF%s\n\n" " Uninstall all Enlightenment 23 programs"
 
     sleep 1 && printf "$ITA%s $OFF%s\n\n" "Or press Ctrl+C to quit."
     read INPUT
