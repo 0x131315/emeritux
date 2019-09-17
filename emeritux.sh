@@ -34,7 +34,7 @@
 # Before reporting an issue, make sure you are using the latest version.
 
 # Please consider sending me a tip via https://www.paypal.me/PJGuillaumie
-# or starring this project to show your support.
+# or starring the repository to show your support.
 # Cheers!
 
 # GitHub repositories: https://github.com/batden
