@@ -431,7 +431,7 @@ do_tests() {
   fi
 
   if [ ! -d $SCRFLR ]; then
-    printf "\n$BDR%s $OFF%s\n\n" "EMERITUX GIT FOLDER NOT FOUND!"
+    printf "\n$BDR%s $OFF%s\n\n" "EMERITUX FOLDER NOT FOUND!"
     beep_exit
     exit 1
   fi
