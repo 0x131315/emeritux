@@ -242,10 +242,10 @@ e_tokens() {
       e_bkp
       ;;
     [nN])
-      printf "n\%s\n\n" "(do not back up my user settings and themes folders... OK)"
+      printf "\n%s\n\n" "(do not back up my user settings and themes folders... OK)"
       ;;
     *)
-      printf "n\%s\n\n" "(do not back up my user settings and themes folders... OK)"
+      printf "\n%s\n\n" "(do not back up my user settings and themes folders... OK)"
       ;;
     esac
   fi
