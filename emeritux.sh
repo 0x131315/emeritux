@@ -402,8 +402,7 @@ do_tests() {
     fi
   fi
 
-  printf "\n\n$BLD%s $OFF%s\n" "SYSTEM CHECK..."
-  sleep 1
+  printf "\n\n$BLD%s $OFF%s\n" "System check..."
 
   if systemd-detect-virt -q --container; then
     printf "\n$BDR%s %s\n" "EMERITUX.SH IS NOT INTENDED FOR USE INSIDE CONTAINERS."
@@ -413,8 +412,8 @@ do_tests() {
   fi
 
   if [ $RELEASE == tina ]; then
+    sleep 2
     printf "\n$BDG%s $OFF%s\n\n" "Linux Mint ${RELEASE^}... OK"
-    sleep 1
   else
     printf "\n$BDR%s $OFF%s\n\n" "UNSUPPORTED OPERATING SYSTEM [ $(lsb_release -d | cut -f2) ]."
     beep_exit
