@@ -2,7 +2,7 @@
 
 # EMERITUX.SH
 
-# This Bash script allows you to safely and easily download, install or update Enlightenment 0.23 (aka E23)
+# This Bash script allows you to easily and safely download, install or update Enlightenment 0.23 (aka E23)
 # on Linux Mint Tina; or helps you perform a clean uninstall of E23.
 
 # To execute the script:
