@@ -69,15 +69,15 @@ libcogl-gles2-dev libexif-dev libfontconfig1-dev libfreetype6-dev \
 libfribidi-dev libgeoclue-2-dev libgif-dev libcurl4-gnutls-dev \
 libgnutls28-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
 libharfbuzz-dev libibus-1.0-dev libinput-dev libjpeg-dev libblkid-dev \
-libluajit-5.1-dev liblz4-dev libmount-dev libopenjp2-7-dev libpam0g-dev \
-libpoppler-cpp-dev libpoppler-dev libpoppler-private-dev libproxy-dev \
-libpulse-dev libraw-dev librsvg2-dev libscim-dev libsndfile1-dev \
-libspectre-dev libssl-dev libsystemd-dev libtiff5-dev libtool \
-libudev-dev libudisks2-dev libunibreak-dev libunwind-dev libuv1-dev \
-libvlc-dev libwebp-dev libxcb-keysyms1-dev libxcursor-dev libxine2-dev \
-libxinerama-dev libxkbcommon-x11-dev libxkbfile-dev libxrandr-dev \
-libxss-dev libxtst-dev linux-tools-common manpages-dev lolcat \
-python3-setuptools python3-wheel texlive-base valgrind \
+libluajit-5.1-dev liblz4-dev libmount-dev libopenjp2-7-dev libosmesa6-dev \
+libpam0g-dev libpoppler-cpp-dev libpoppler-dev libpoppler-private-dev \
+libproxy-dev libpulse-dev libraw-dev librsvg2-dev libscim-dev \
+libsndfile1-dev libspectre-dev libssl-dev libsystemd-dev libtiff5-dev \
+libtool libudev-dev libudisks2-dev libunibreak-dev libunwind-dev \
+libuv1-dev libvlc-dev libwebp-dev libxcb-keysyms1-dev libxcursor-dev \
+libxine2-dev libxinerama-dev libxkbcommon-x11-dev libxkbfile-dev \
+libxrandr-dev libxss-dev libxtst-dev linux-tools-common manpages-dev \
+lolcat python3-setuptools python3-wheel texlive-base valgrind \
 wmctrl xserver-xephyr xwayland zenity"
 
 # Programs from GIT repositories (latest source code).
