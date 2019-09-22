@@ -911,17 +911,18 @@ uninstall_e23() {
 main() {
   trap '{ printf "\n$BDR%s $OFF%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' INT
 
-  do_tests
-
   INPUT=0
   printf "\n$BLD%s $OFF%s\n" "Please enter the number of your choice:"
   sel_menu
 
   if [ $INPUT == 1 ]; then
+    do_tests
     install_now
   elif [ $INPUT == 2 ]; then
+    do_tests
     update_go
   elif [ $INPUT == 3 ]; then
+    do_tests
     wld_go
   elif [ $INPUT == 4 ]; then
     uninstall_e23
