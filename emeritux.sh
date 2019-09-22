@@ -412,8 +412,8 @@ do_tests() {
   fi
 
   if [ $RELEASE == tina ]; then
-    sleep 2
     printf "\n$BDG%s $OFF%s\n\n" "Linux Mint ${RELEASE^}... OK"
+    sleep 2
   else
     printf "\n$BDR%s $OFF%s\n\n" "UNSUPPORTED OPERATING SYSTEM [ $(lsb_release -d | cut -f2) ]."
     beep_exit
