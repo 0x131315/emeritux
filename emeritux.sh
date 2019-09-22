@@ -638,6 +638,7 @@ wld_go() {
     cowsay -f www "Now log out of your existing session and press Ctrl+Alt+F2 to switch to tty2, \
         then enter your credentials and type: enlightenment_start" | lolcat -a
     echo
+    # Wait a few seconds for the Wayland session to start.
     # When you're done, type exit
     # Pressing Ctrl+Alt+F7 will bring you back to the login screen.
   else
