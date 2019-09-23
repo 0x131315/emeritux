@@ -301,7 +301,7 @@ rebuild_optim() {
   printf "\n$BLD%s $OFF%s\n\n" "Updating rlottie..."
   git reset --hard &>/dev/null
   git pull
-  sudo chown $USER:$USER build/.ninja_log
+  sudo chown $USER:$USER build/.ninja*
   meson configure -Dexample=false -Dbuildtype=release build/
   ninja -C build/ || true
   $SNIN || true
@@ -319,18 +319,18 @@ rebuild_optim() {
 
     case $I in
     efl)
-      sudo chown $USER:$USER build/.ninja_log
+      sudo chown $USER:$USER build/.ninja*
       meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuild-tests=false \
         -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release build/
       ninja -C build/ || mng_err
       ;;
     enlightenment)
-      sudo chown $USER:$USER build/.ninja_log
+      sudo chown $USER:$USER build/.ninja*
       meson configure -Dbuildtype=release build/
       ninja -C build/ || mng_err
       ;;
     *)
-      sudo chown $USER:$USER build/.ninja_log
+      sudo chown $USER:$USER build/.ninja*
       meson configure -Dbuildtype=release build/
       ninja -C build/ || true
       ;;
@@ -352,7 +352,7 @@ rebuild_wld() {
   printf "\n$BLD%s $OFF%s\n\n" "Updating rlottie..."
   git reset --hard &>/dev/null
   git pull
-  sudo chown $USER:$USER build/.ninja_log
+  sudo chown $USER:$USER build/.ninja*
   meson configure -Dexample=false -Dbuildtype=release build/
   ninja -C build/ || true
   $SNIN || true
@@ -370,18 +370,18 @@ rebuild_wld() {
 
     case $I in
     efl)
-      sudo chown $USER:$USER build/.ninja_log
+      sudo chown $USER:$USER build/.ninja*
       meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Ddrm=true -Dwl=true \
         -Dopengl=es-egl -Dbuild-tests=false -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release build/
       ninja -C build/ || mng_err
       ;;
     enlightenment)
-      sudo chown $USER:$USER build/.ninja_log
+      sudo chown $USER:$USER build/.ninja*
       meson configure -Dwl=true -Dbuildtype=release build/
       ninja -C build/ || mng_err
       ;;
     *)
-      sudo chown $USER:$USER build/.ninja_log
+      sudo chown $USER:$USER build/.ninja*
       meson configure -Dbuildtype=release build/
       ninja -C build/ || true
       ;;
