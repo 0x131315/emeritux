@@ -24,7 +24,7 @@
 
 # Once installed, you can update your Enlightenment desktop whenever you want to. However,
 # because software gains entropy over time (performance regression, unexpected behavior...),
-# I highly recommend doing a complete uninstall and reinstall of E23 every three weeks or so
+# I highly recommend doing a complete uninstall and reinstall of E23 every two weeks or so
 # for an optimal user experience.
 
 # Note that you need to uninstall all E23 programs *before* upgrading your current system to
