@@ -18,14 +18,15 @@
 
 # Heads up!
 # Enlightenment programs installed from .deb packages or tarballs will inevitably conflict with
-# E23 programs compiled from GIT source code——do not mix source code with pre-built binaries!
+# E23 programs compiled from Git repositories——do not mix source code with pre-built binaries!
 # Please remove thoroughly any previous installation of EFL/Enlightenment/E-Apps (track down
 # and delete any leftover files) before running EMERITUX.SH.
 
-# Once installed, you can update your Enlightenment desktop whenever you want to. However,
-# because software gains entropy over time (performance regression, unexpected behavior...),
-# I highly recommend doing a complete uninstall and reinstall of E23 every two weeks or so
-# for an optimal user experience.
+# Once installed, you can update your shiny new Enlightenment desktop whenever you want to.
+# However, because software gains entropy over time (performance regression, unexpected
+# behavior... this is especially true when dealing with source code), I highly recommend
+# doing a complete uninstall and reinstall of E23 every two weeks or so for an optimal
+# user experience.
 
 # Note that you need to uninstall all E23 programs *before* upgrading your current system to
 # a newer version of Linux Mint.
@@ -116,7 +117,7 @@ beep_ok() {
 sel_menu() {
   if [ $INPUT -lt 1 ]; then
     echo
-    printf "1. $BDG%s $OFF%s\n\n" " Install Enlightenment 23 from git master branch"
+    printf "1. $BDG%s $OFF%s\n\n" " Install Enlightenment 23 from the master branch"
     printf "2. $BDG%s $OFF%s\n\n" " Update and rebuild Enlightenment 23"         # Best user experience.
     printf "3. $BDY%s $OFF%s\n\n" " Update and rebuild E23 with Wayland support" # Experimental.
     printf "4. $BDR%s $OFF%s\n\n" " Uninstall all Enlightenment 23 programs"
