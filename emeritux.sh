@@ -226,6 +226,11 @@ e_bkp() {
 
   mkdir $DOCDIR/ebackups/E_$TSTAMP
   cp -aR $HOME/.elementary $DOCDIR/ebackups/E_$TSTAMP && cp -aR $HOME/.e $DOCDIR/ebackups/E_$TSTAMP
+
+  if [ -d $HOME/.config/terminology ]; then
+    cp -aR $HOME/.config/terminology $DOCDIR/ebackups/Eterm_$TSTAMP
+  fi
+
   sleep 2
 }
 
