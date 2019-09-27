@@ -855,7 +855,7 @@ uninstall_e23() {
   sudo rm -rf elementary*
   sudo rm -rf terminology*
 
-  cd /usr/share/
+  cd /usr/share
   sudo rm -rf xsessions/enlightenment.desktop &>/dev/null
   cd /usr/share/dbus-1/services
   sudo rm -rf org.enlightenment.Ethumb.service
