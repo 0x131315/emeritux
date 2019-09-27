@@ -219,7 +219,7 @@ elap_stop() {
 e_bkp() {
   # Timestamp: See man date to convert epoch to human readable date.
   TSTAMP=$(date +%s)
-  mkdir -p $DOCDIR/ebackups/
+  mkdir -p $DOCDIR/ebackups
 
   gio set $DOCDIR/ebackups/ metadata::custom-icon \
     file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
@@ -271,20 +271,20 @@ build_optim() {
 
     case $I in
     efl)
-      meson . build/
+      meson . build
       meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuild-tests=false \
-        -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release build/
-      ninja -C build/ || mng_err
+        -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release build
+      ninja -C build || mng_err
       ;;
     enlightenment)
-      meson . build/
-      meson configure -Dbuildtype=release build/
-      ninja -C build/ || mng_err
+      meson . build
+      meson configure -Dbuildtype=release build
+      ninja -C build || mng_err
       ;;
     *)
-      meson . build/
-      meson configure -Dbuildtype=release build/
-      ninja -C build/ || true
+      meson . build
+      meson configure -Dbuildtype=release build
+      ninja -C build || true
       ;;
     esac
 
@@ -298,13 +298,13 @@ rebuild_optim() {
   e_tokens
   elap_start
 
-  cd $DOCDIR/sources/rlottie/
+  cd $DOCDIR/sources/rlottie
   printf "\n$BLD%s $OFF%s\n\n" "Updating rlottie..."
   git reset --hard &>/dev/null
   git pull
   sudo chown $USER:$USER build/.ninja*
-  meson configure -Dexample=false -Dbuildtype=release build/
-  ninja -C build/ || true
+  meson configure -Dexample=false -Dbuildtype=release build
+  ninja -C build || true
   $SNIN || true
   sudo ldconfig
 
@@ -322,18 +322,18 @@ rebuild_optim() {
     efl)
       sudo chown $USER:$USER build/.ninja*
       meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuild-tests=false \
-        -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release build/
-      ninja -C build/ || mng_err
+        -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release build
+      ninja -C build || mng_err
       ;;
     enlightenment)
       sudo chown $USER:$USER build/.ninja*
-      meson configure -Dbuildtype=release build/
-      ninja -C build/ || mng_err
+      meson configure -Dbuildtype=release build
+      ninja -C build || mng_err
       ;;
     *)
       sudo chown $USER:$USER build/.ninja*
-      meson configure -Dbuildtype=release build/
-      ninja -C build/ || true
+      meson configure -Dbuildtype=release build
+      ninja -C build || true
       ;;
     esac
 
@@ -349,13 +349,13 @@ rebuild_wld() {
   e_tokens
   elap_start
 
-  cd $DOCDIR/sources/rlottie/
+  cd $DOCDIR/sources/rlottie
   printf "\n$BLD%s $OFF%s\n\n" "Updating rlottie..."
   git reset --hard &>/dev/null
   git pull
   sudo chown $USER:$USER build/.ninja*
-  meson configure -Dexample=false -Dbuildtype=release build/
-  ninja -C build/ || true
+  meson configure -Dexample=false -Dbuildtype=release build
+  ninja -C build || true
   $SNIN || true
   sudo ldconfig
 
@@ -373,18 +373,18 @@ rebuild_wld() {
     efl)
       sudo chown $USER:$USER build/.ninja*
       meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Ddrm=true -Dwl=true \
-        -Dopengl=es-egl -Dbuild-tests=false -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release build/
-      ninja -C build/ || mng_err
+        -Dopengl=es-egl -Dbuild-tests=false -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release build
+      ninja -C build || mng_err
       ;;
     enlightenment)
       sudo chown $USER:$USER build/.ninja*
-      meson configure -Dwl=true -Dbuildtype=release build/
-      ninja -C build/ || mng_err
+      meson configure -Dwl=true -Dbuildtype=release build
+      ninja -C build || mng_err
       ;;
     *)
       sudo chown $USER:$USER build/.ninja*
-      meson configure -Dbuildtype=release build/
-      ninja -C build/ || true
+      meson configure -Dbuildtype=release build
+      ninja -C build || true
       ;;
     esac
 
@@ -436,18 +436,18 @@ do_tests() {
     exit 1
   fi
 
-  if [ ! -d $DOCDIR/sources/ ]; then
-    mkdir -p $DOCDIR/sources/
+  if [ ! -d $DOCDIR/sources ]; then
+    mkdir -p $DOCDIR/sources
   fi
 
-  if [ ! -d $HOME/.local/bin/ ]; then
-    mkdir -p $HOME/.local/bin/
+  if [ ! -d $HOME/.local/bin ]; then
+    mkdir -p $HOME/.local/bin
   fi
 
-  if [ ! -d $HOME/.cache/ebuilds/ ]; then
-    mkdir -p $HOME/.cache/ebuilds/
+  if [ ! -d $HOME/.cache/ebuilds ]; then
+    mkdir -p $HOME/.cache/ebuilds
 
-    gio set $HOME/.cache/ebuilds/ metadata::custom-icon \
+    gio set $HOME/.cache/ebuilds metadata::custom-icon \
       file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
   fi
 }
@@ -470,7 +470,7 @@ do_bsh_alias() {
     export LDFLAGS=-L/usr/local/lib
     export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
-    # This script adds the ~/.local/bin/ directory to your PATH environment variable if required.
+    # This script adds the ~/.local/bin directory to your PATH environment variable if required.
 EOF
 
     source $HOME/.bash_aliases
@@ -478,7 +478,7 @@ EOF
 }
 
 get_meson() {
-  if [ ! -d $HOME/.local/lib/python3.6/site-packages/mesonbuild/ ]; then
+  if [ ! -d $HOME/.local/lib/python3.6/site-packages/mesonbuild ]; then
     sudo apt install --yes ninja-build python3-pip && pip3 install --user meson==$MVER
     if [ "$?" == 0 ]; then
       if ! echo $PATH | grep -q $HOME/.local/bin; then
@@ -495,7 +495,7 @@ get_preq() {
   cd $DLDIR
   printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites..."
   wget -c https://ftp.gnu.org/pub/gnu/libiconv/$ICNV.tar.gz
-  tar xzvf $ICNV.tar.gz -C $DOCDIR/sources/
+  tar xzvf $ICNV.tar.gz -C $DOCDIR/sources
   cd $DOCDIR/sources/$ICNV
   $CONFG
   make
@@ -507,9 +507,9 @@ get_preq() {
   cd $DOCDIR/sources
   git clone https://github.com/Samsung/rlottie.git
   cd $DOCDIR/sources/rlottie
-  meson . build/
-  meson configure -Dexample=false -Dbuildtype=release build/
-  ninja -C build/ || mng_err
+  meson . build
+  meson configure -Dexample=false -Dbuildtype=release build
+  ninja -C build || mng_err
   $SNIN || mng_err
   sudo ldconfig
   echo
@@ -543,7 +543,7 @@ install_now() {
 
   printf "\n%s\n\n" "Almost done..."
 
-  mkdir -p $HOME/.elementary/themes/
+  mkdir -p $HOME/.elementary/themes
 
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
     /usr/share/xsessions/enlightenment.desktop
@@ -551,7 +551,7 @@ install_now() {
   gio set $SCRFLR metadata::custom-icon \
     file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
 
-  gio set $DOCDIR/sources/ metadata::custom-icon \
+  gio set $DOCDIR/sources metadata::custom-icon \
     file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
 
   gio set $E23 metadata::custom-icon \
@@ -560,7 +560,7 @@ install_now() {
   gio set $DOCDIR/sources/$ICNV metadata::custom-icon \
     file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
 
-  gio set $DOCDIR/sources/rlottie/ metadata::custom-icon \
+  gio set $DOCDIR/sources/rlottie metadata::custom-icon \
     file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
 
   sudo updatedb
@@ -576,7 +576,7 @@ install_now() {
   cowsay "No Reboot Required... That's All Folks!" | lolcat -a
   echo
 
-  cp -f $DLDIR/emeritux.sh $HOME/.local/bin/
+  cp -f $DLDIR/emeritux.sh $HOME/.local/bin
 }
 
 update_go() {
@@ -590,7 +590,7 @@ update_go() {
     printf "\n$BDG%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP: RELEASE BUILD *"
   fi
 
-  cp -f $SCRFLR/emeritux.sh $HOME/.local/bin/
+  cp -f $SCRFLR/emeritux.sh $HOME/.local/bin
   chmod +x $HOME/.local/bin/emeritux.sh
   sleep 1
 
@@ -620,7 +620,7 @@ wld_go() {
     printf "\n$BDY%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP: WAYLAND BUILD *"
   fi
 
-  cp -f $SCRFLR/emeritux.sh $HOME/.local/bin/
+  cp -f $SCRFLR/emeritux.sh $HOME/.local/bin
   chmod +x $HOME/.local/bin/emeritux.sh
   sleep 1
 
@@ -629,7 +629,7 @@ wld_go() {
 
   rebuild_wld
 
-  cd /usr/share/ && sudo rm -rf xsessions/enlightenment.desktop
+  cd /usr/share && sudo rm -rf xsessions/enlightenment.desktop
 
   sudo updatedb
   beep_ok
@@ -651,8 +651,8 @@ wld_go() {
 
 remov_eprog_mn() {
   for I in $PROG_MN; do
-    sudo ninja -C build/ uninstall
-    rm -rf build/ &>/dev/null
+    sudo ninja -C build uninstall
+    rm -rf build &>/dev/null
   done
 }
 
@@ -672,9 +672,9 @@ remov_preq() {
       sudo rm -rf /usr/local/bin/iconv
       echo
 
-      cd $DOCDIR/sources/rlottie/
-      sudo ninja -C build/ uninstall
-      cd .. && rm -rf rlottie/
+      cd $DOCDIR/sources/rlottie
+      sudo ninja -C build uninstall
+      cd .. && rm -rf rlottie
       echo
       ;;
     [nN])
@@ -689,9 +689,9 @@ remov_preq() {
       sudo rm -rf /usr/local/bin/iconv
       echo
 
-      cd $DOCDIR/sources/rlottie/
-      sudo ninja -C build/ uninstall
-      cd .. && rm -rf rlottie/
+      cd $DOCDIR/sources/rlottie
+      sudo ninja -C build uninstall
+      cd .. && rm -rf rlottie
       echo
       ;;
     esac
@@ -699,7 +699,7 @@ remov_preq() {
 }
 
 remov_meson() {
-  if [ -d $HOME/.local/lib/python3.6/site-packages/mesonbuild/ ]; then
+  if [ -d $HOME/.local/lib/python3.6/site-packages/mesonbuild ]; then
     echo
     beep_question
     read -t 12 -p "Remove locally installed Meson? [y/N] " answer
@@ -724,7 +724,7 @@ remov_meson() {
 # for later reference, or better yet, keep the currently
 # installed set of development packages.
 remov_bin_deps() {
-  if [ ! -d $HOME/.local/lib/python3.6/site-packages/mesonbuild/ ]; then
+  if [ ! -d $HOME/.local/lib/python3.6/site-packages/mesonbuild ]; then
     echo
     beep_question
     read -t 12 -p "Remove binary dependencies (development packages)? [y/N] " answer
@@ -755,14 +755,14 @@ uninstall_e23() {
   cd $HOME
   rm -rf $E23
   rm -rf $SCRFLR
-  rm -rf .e/
-  rm -rf .elementary/
-  rm -rf .cache/ebuilds/
-  rm -rf .cache/efreet/
-  rm -rf .cache/evas_gl_common_caches/
-  rm -rf .config/terminology/
+  rm -rf .e
+  rm -rf .elementary
+  rm -rf .cache/ebuilds
+  rm -rf .cache/efreet
+  rm -rf .cache/evas_gl_common_caches
+  rm -rf .config/terminology
 
-  cd /usr/local/
+  cd /usr/local
   sudo rm -rf ecore*
   sudo rm -rf edje*
   sudo rm -rf efl*
@@ -772,7 +772,7 @@ uninstall_e23() {
   sudo rm -rf eo*
   sudo rm -rf evas*
 
-  cd /usr/local/bin/
+  cd /usr/local/bin
   sudo rm -rf eina*
   sudo rm -rf efl*
   sudo rm -rf elua*
@@ -780,14 +780,14 @@ uninstall_e23() {
   sudo rm -rf emotion*
   sudo rm -rf evas*
 
-  cd /usr/local/etc/
-  sudo rm -rf enlightenment/
+  cd /usr/local/etc
+  sudo rm -rf enlightenment
 
-  cd /usr/local/include/
+  cd /usr/local/include
   sudo rm -rf *-1
-  sudo rm -rf enlightenment/
+  sudo rm -rf enlightenment
 
-  cd /usr/local/lib/
+  cd /usr/local/lib
   sudo rm -rf ecore*
   sudo rm -rf edje*
   sudo rm -rf eeze*
@@ -823,7 +823,7 @@ uninstall_e23() {
   sudo rm -rf libethumb*
   sudo rm -rf libevas*
 
-  cd /usr/local/share/
+  cd /usr/local/share
   sudo rm -rf dbus*
   sudo rm -rf ecore*
   sudo rm -rf edje*
@@ -842,32 +842,32 @@ uninstall_e23() {
   sudo rm -rf terminology*
   sudo rm -rf wayland-sessions*
 
-  cd /usr/local/share/applications/
+  cd /usr/local/share/applications
   sudo sed -i '/enlightenment_filemanager/d' mimeinfo.cache
 
-  cd /usr/local/share/icons/
-  sudo rm -rf Enlightenment-X/
+  cd /usr/local/share/icons
+  sudo rm -rf Enlightenment-X
   sudo rm -rf elementary*
   sudo rm -rf terminology*
 
   cd /usr/share/
   sudo rm -rf xsessions/enlightenment.desktop &>/dev/null
-  cd /usr/share/dbus-1/services/
+  cd /usr/share/dbus-1/services
   sudo rm -rf org.enlightenment.Ethumb.service
 
   cd $HOME
 
-  find /usr/local/share/locale/*/LC_MESSAGES/ 2>/dev/null | while read -r I; do
+  find /usr/local/share/locale/*/LC_MESSAGES 2>/dev/null | while read -r I; do
     echo "$I" | xargs sudo rm -rf $(grep -E 'efl|enlightenment|terminology')
   done
 
-  if [ -d $HOME/.ccache/ ]; then
+  if [ -d $HOME/.ccache ]; then
     echo
     beep_question
     read -t 12 -p "Remove the hidden ccache folder (compiler cache)? [y/N] " answer
     case $answer in
     [yY])
-      rm -rf $HOME/.ccache/
+      rm -rf $HOME/.ccache
       ;;
     [nN])
       printf "\n%s\n\n" "(do not delete the ccache folder... OK)"
