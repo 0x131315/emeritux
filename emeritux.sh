@@ -775,6 +775,9 @@ uninstall_e23() {
   rm -rf .cache/evas_gl_common_caches
   rm -rf .config/terminology
 
+  cd /etc
+  sudo rm -rf sysactions.conf
+
   cd /usr/local
   sudo rm -rf ecore*
   sudo rm -rf edje*
