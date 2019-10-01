@@ -552,6 +552,8 @@ install_now() {
 
   mkdir -p $HOME/.elementary/themes
 
+  sudo mv -f /usr/local/etc/enlightenment/sysactions.conf /etc
+
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
     /usr/share/xsessions/enlightenment.desktop
 
@@ -606,6 +608,8 @@ update_go() {
 
   rebuild_optim
 
+  sudo mv -f /usr/local/etc/enlightenment/sysactions.conf /etc
+
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
     /usr/share/xsessions/enlightenment.desktop
 
@@ -635,6 +639,8 @@ wld_go() {
   bin_deps
 
   rebuild_wld
+
+  sudo mv -f /usr/local/etc/enlightenment/sysactions.conf /etc
 
   cd /usr/share && sudo rm -rf xsessions/enlightenment.desktop
 
