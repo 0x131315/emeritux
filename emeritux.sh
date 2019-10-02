@@ -246,15 +246,15 @@ e_tokens() {
     beep_question
     read -t 12 -p "Do you want to back up your E23 settings now? [y/N] " answer
     case $answer in
-    [yY])
-      e_bkp
-      ;;
-    [nN])
-      printf "\n%s\n\n" "(do not back up my user settings and themes folders... OK)"
-      ;;
-    *)
-      printf "\n%s\n\n" "(do not back up my user settings and themes folders... OK)"
-      ;;
+      [yY])
+        e_bkp
+        ;;
+      [nN])
+        printf "\n%s\n\n" "(do not back up my user settings and themes folders... OK)"
+        ;;
+      *)
+        printf "\n%s\n\n" "(do not back up my user settings and themes folders... OK)"
+        ;;
     esac
   fi
 }
@@ -277,22 +277,22 @@ build_optim() {
     printf "\n$BLD%s $OFF%s\n\n" "Building $I..."
 
     case $I in
-    efl)
-      meson . build
-      meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuild-tests=false \
-        -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release build
-      ninja -C build || mng_err
-      ;;
-    enlightenment)
-      meson . build
-      meson configure -Dbuildtype=release build
-      ninja -C build || mng_err
-      ;;
-    *)
-      meson . build
-      meson configure -Dbuildtype=release build
-      ninja -C build || true
-      ;;
+      efl)
+        meson . build
+        meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuild-tests=false \
+          -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release build
+        ninja -C build || mng_err
+        ;;
+      enlightenment)
+        meson . build
+        meson configure -Dbuildtype=release build
+        ninja -C build || mng_err
+        ;;
+      *)
+        meson . build
+        meson configure -Dbuildtype=release build
+        ninja -C build || true
+        ;;
     esac
 
     beep_attention
@@ -326,22 +326,22 @@ rebuild_optim() {
     git pull
 
     case $I in
-    efl)
-      sudo chown $USER:$USER build/.ninja*
-      meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuild-tests=false \
-        -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release build
-      ninja -C build || mng_err
-      ;;
-    enlightenment)
-      sudo chown $USER:$USER build/.ninja*
-      meson configure -Dbuildtype=release build
-      ninja -C build || mng_err
-      ;;
-    *)
-      sudo chown $USER:$USER build/.ninja*
-      meson configure -Dbuildtype=release build
-      ninja -C build || true
-      ;;
+      efl)
+        sudo chown $USER:$USER build/.ninja*
+        meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Dbuild-tests=false \
+          -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release build
+        ninja -C build || mng_err
+        ;;
+      enlightenment)
+        sudo chown $USER:$USER build/.ninja*
+        meson configure -Dbuildtype=release build
+        ninja -C build || mng_err
+        ;;
+      *)
+        sudo chown $USER:$USER build/.ninja*
+        meson configure -Dbuildtype=release build
+        ninja -C build || true
+        ;;
     esac
 
     beep_attention
@@ -377,22 +377,22 @@ rebuild_wld() {
     git pull
 
     case $I in
-    efl)
-      sudo chown $USER:$USER build/.ninja*
-      meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Ddrm=true -Dwl=true \
-        -Dopengl=es-egl -Dbuild-tests=false -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release build
-      ninja -C build || mng_err
-      ;;
-    enlightenment)
-      sudo chown $USER:$USER build/.ninja*
-      meson configure -Dwl=true -Dbuildtype=release build
-      ninja -C build || mng_err
-      ;;
-    *)
-      sudo chown $USER:$USER build/.ninja*
-      meson configure -Dbuildtype=release build
-      ninja -C build || true
-      ;;
+      efl)
+        sudo chown $USER:$USER build/.ninja*
+        meson configure -Dnative-arch-optimization=true -Dharfbuzz=true -Dbindings=luajit,cxx -Ddrm=true -Dwl=true \
+          -Dopengl=es-egl -Dbuild-tests=false -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release build
+        ninja -C build || mng_err
+        ;;
+      enlightenment)
+        sudo chown $USER:$USER build/.ninja*
+        meson configure -Dwl=true -Dbuildtype=release build
+        ninja -C build || mng_err
+        ;;
+      *)
+        sudo chown $USER:$USER build/.ninja*
+        meson configure -Dbuildtype=release build
+        ninja -C build || true
+        ;;
     esac
 
     beep_attention
@@ -676,37 +676,37 @@ remov_preq() {
     # Questions: Enter either y or n, or press Enter to accept the default values.
     read -t 12 -p "Remove libiconv and rlottie? [Y/n] " answer
     case $answer in
-    [yY])
-      echo
-      cd $DOCDIR/sources/$ICNV
-      sudo make uninstall
-      make maintainer-clean
-      cd .. && rm -rf $DOCDIR/sources/$ICNV
-      sudo rm -rf /usr/local/bin/iconv
-      echo
+      [yY])
+        echo
+        cd $DOCDIR/sources/$ICNV
+        sudo make uninstall
+        make maintainer-clean
+        cd .. && rm -rf $DOCDIR/sources/$ICNV
+        sudo rm -rf /usr/local/bin/iconv
+        echo
 
-      cd $DOCDIR/sources/rlottie
-      sudo ninja -C build uninstall
-      cd .. && rm -rf rlottie
-      echo
-      ;;
-    [nN])
-      printf "\n%s\n\n" "(do not remove prerequisites... OK)"
-      ;;
-    *)
-      echo
-      cd $DOCDIR/sources/$ICNV
-      sudo make uninstall
-      make maintainer-clean
-      cd .. && rm -rf $DOCDIR/sources/$ICNV
-      sudo rm -rf /usr/local/bin/iconv
-      echo
+        cd $DOCDIR/sources/rlottie
+        sudo ninja -C build uninstall
+        cd .. && rm -rf rlottie
+        echo
+        ;;
+      [nN])
+        printf "\n%s\n\n" "(do not remove prerequisites... OK)"
+        ;;
+      *)
+        echo
+        cd $DOCDIR/sources/$ICNV
+        sudo make uninstall
+        make maintainer-clean
+        cd .. && rm -rf $DOCDIR/sources/$ICNV
+        sudo rm -rf /usr/local/bin/iconv
+        echo
 
-      cd $DOCDIR/sources/rlottie
-      sudo ninja -C build uninstall
-      cd .. && rm -rf rlottie
-      echo
-      ;;
+        cd $DOCDIR/sources/rlottie
+        sudo ninja -C build uninstall
+        cd .. && rm -rf rlottie
+        echo
+        ;;
     esac
   fi
 }
@@ -717,17 +717,17 @@ remov_meson() {
     beep_question
     read -t 12 -p "Remove locally installed Meson? [y/N] " answer
     case $answer in
-    [yY])
-      echo
-      pip3 uninstall --yes meson
-      echo
-      ;;
-    [nN])
-      printf "\n%s\n\n" "(do not remove Meson... OK)"
-      ;;
-    *)
-      printf "\n%s\n\n" "(do not remove Meson... OK)"
-      ;;
+      [yY])
+        echo
+        pip3 uninstall --yes meson
+        echo
+        ;;
+      [nN])
+        printf "\n%s\n\n" "(do not remove Meson... OK)"
+        ;;
+      *)
+        printf "\n%s\n\n" "(do not remove Meson... OK)"
+        ;;
     esac
   fi
 }
@@ -741,18 +741,18 @@ remov_bin_deps() {
     beep_question
     read -t 12 -p "Remove binary dependencies (development packages)? [y/N] " answer
     case $answer in
-    [yY])
-      printf "\n%s\n\n" "Please read the APT report carefully before pressing y to continue with the uninstall."
-      sleep 3
-      sudo apt autoremove $DEPS
-      echo
-      ;;
-    [nN])
-      printf "\n%s\n\n" "(keep the currently installed set of dev packages... OK)"
-      ;;
-    *)
-      printf "\n%s\n\n" "(keep the currently installed set of dev packages... OK)"
-      ;;
+      [yY])
+        printf "\n%s\n\n" "Please read the APT report carefully before pressing y to continue with the uninstall."
+        sleep 3
+        sudo apt autoremove $DEPS
+        echo
+        ;;
+      [nN])
+        printf "\n%s\n\n" "(keep the currently installed set of dev packages... OK)"
+        ;;
+      *)
+        printf "\n%s\n\n" "(keep the currently installed set of dev packages... OK)"
+        ;;
     esac
   fi
 }
@@ -882,15 +882,15 @@ uninstall_e23() {
     beep_question
     read -t 12 -p "Remove the hidden ccache folder (compiler cache)? [y/N] " answer
     case $answer in
-    [yY])
-      rm -rf $HOME/.ccache
-      ;;
-    [nN])
-      printf "\n%s\n\n" "(do not delete the ccache folder... OK)"
-      ;;
-    *)
-      printf "\n%s\n\n" "(do not delete the ccache folder... OK)"
-      ;;
+      [yY])
+        rm -rf $HOME/.ccache
+        ;;
+      [nN])
+        printf "\n%s\n\n" "(do not delete the ccache folder... OK)"
+        ;;
+      *)
+        printf "\n%s\n\n" "(do not delete the ccache folder... OK)"
+        ;;
     esac
   fi
 
@@ -899,15 +899,15 @@ uninstall_e23() {
     beep_question
     read -t 12 -p "Remove the hidden bash_aliases file? [Y/n] " answer
     case $answer in
-    [yY])
-      rm -rf $HOME/.bash_aliases && source $HOME/.bashrc
-      ;;
-    [nN])
-      printf "\n%s\n\n" "(do not delete bash_aliases... OK)"
-      ;;
-    *)
-      rm -rf $HOME/.bash_aliases && source $HOME/.bashrc
-      ;;
+      [yY])
+        rm -rf $HOME/.bash_aliases && source $HOME/.bashrc
+        ;;
+      [nN])
+        printf "\n%s\n\n" "(do not delete bash_aliases... OK)"
+        ;;
+      *)
+        rm -rf $HOME/.bash_aliases && source $HOME/.bashrc
+        ;;
     esac
   fi
 
