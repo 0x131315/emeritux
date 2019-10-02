@@ -732,10 +732,9 @@ remov_meson() {
   fi
 }
 
-# Think twice before proceeding with the removal of these packages,
-# please review them carefully. If in doubt, take a screenshot
-# for later reference, or better yet, keep the currently
-# installed set of development packages.
+# Think twice before proceeding with the removal of these packages!
+# If in doubt, take a screenshot for later reference, or better yet,
+# keep the currently installed set of development packages.
 remov_bin_deps() {
   if [ ! -d $HOME/.local/lib/python3.6/site-packages/mesonbuild ]; then
     echo
@@ -743,7 +742,8 @@ remov_bin_deps() {
     read -t 12 -p "Remove binary dependencies (development packages)? [y/N] " answer
     case $answer in
     [yY])
-      echo
+      printf "\n%s\n\n" "Please read the APT report carefully before pressing y to continue with the uninstall."
+      sleep 3
       sudo apt autoremove $DEPS
       echo
       ;;
