@@ -120,9 +120,14 @@ sel_menu() {
   if [ $INPUT -lt 1 ]; then
     echo
     printf "1. $BDG%s $OFF%s\n\n" " Install Enlightenment 23 from the master branch"
-    printf "2. $BDG%s $OFF%s\n\n" " Update and rebuild Enlightenment 23"         # Best user experience.
-    printf "3. $BDY%s $OFF%s\n\n" " Update and rebuild E23 with Wayland support" # Experimental.
+    printf "2. $BDG%s $OFF%s\n\n" " Update and rebuild Enlightenment 23"
+    printf "3. $BDY%s $OFF%s\n\n" " Update and rebuild E23 with Wayland support"
     printf "4. $BDR%s $OFF%s\n\n" " Uninstall all Enlightenment 23 programs"
+
+    # Hints.
+    # 1/2: A feature-rich, decently optimized build; however, occasionally technical glitches do happen.
+    # 3: The Wayland compositor is "still considered experimental and not for the regular end users".
+    # 4: Nuke 'Em All!
 
     sleep 1 && printf "$ITA%s $OFF%s\n\n" "Or press Ctrl+C to quit."
     read INPUT
