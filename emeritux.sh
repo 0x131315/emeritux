@@ -125,8 +125,8 @@ sel_menu() {
     printf "4. $BDR%s $OFF%s\n\n" " Uninstall all Enlightenment 23 programs"
 
     # Hints.
-    # 1/2: A feature-rich, decently optimized build; however, occasionally technical glitches do happen.
-    # 3: The Wayland compositor is "still considered experimental and not for the regular end users".
+    # 1/2: A feature-rich, decently optimized build; however, occasionally technical glitches do happen...
+    # 3 Running Enlightenment as a Wayland compositor is still considered experimental.
     # 4: Nuke 'Em All!
 
     sleep 1 && printf "$ITA%s $OFF%s\n\n" "Or press Ctrl+C to quit."
