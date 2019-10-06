@@ -28,7 +28,7 @@
 # doing a complete uninstall and reinstall of E23 every two weeks or so for an optimal
 # user experience.
 
-# Note that you need to uninstall all E23 programs *before* upgrading your current system to
+# NOTE that you need to uninstall all E23 programs *before* upgrading your current system to
 # a newer version of Linux Mint.
 
 # EMERITUX.SH is written by similar@orange.fr, feel free to use this script as you see fit.
@@ -126,7 +126,7 @@ sel_menu() {
 
     # Hints.
     # 1/2: A feature-rich, decently optimized build; however, occasionally technical glitches do happen...
-    # 3 Running Enlightenment as a Wayland compositor is still considered experimental.
+    # 3: Running Enlightenment as a Wayland compositor is still considered experimental.
     # 4: Nuke 'Em All!
 
     sleep 1 && printf "$ITA%s $OFF%s\n\n" "Or press Ctrl+C to quit."
