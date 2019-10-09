@@ -82,6 +82,14 @@ libxrandr-dev libxss-dev libxtst-dev linux-tools-common lolcat \
 manpages-dev python3-setuptools python3-wheel texlive-base \
 valgrind wayland-protocols wmctrl xserver-xephyr xwayland zenity"
 
+# (2) aspell, cmake, faenza-icon-theme, gstreamer1.0-libav,
+# gstreamer1.0-plugins-bad, gstreamer1.0-plugins-good,
+# gstreamer1.0-plugins-ugly, imagemagick, libexif-dev,
+# libgeoclue-2-dev, libscim-dev, libosmesa6-dev,
+# linux-tools-common, libvlc-dev, libxine2-dev,
+# manpages-dev, texlive-base, valgrind, xserver-xephyr
+# (3) ccache, cowsay, git, lolcat, wmctrl, zenity
+
 # Programs from GIT repositories (latest source code).
 CLONEFL="git clone https://git.enlightenment.org/core/efl.git"
 CLONETY="git clone https://git.enlightenment.org/apps/terminology.git"
@@ -134,7 +142,7 @@ sel_menu() {
 }
 
 bin_deps() {
-  sudo apt update && sudo apt full-upgrade --yes
+  sudo apt update && sudo apt full-upgrade
 
   # Backup list of currently installed packages (with a few exceptions).
   if [ ! -f $DOCDIR/installed_pkgs.txt ]; then
@@ -156,7 +164,7 @@ bin_deps() {
     grep -Erh ^deb /etc/apt/sources.list* >$DOCDIR/installed_repos.txt
   fi
 
-  sudo apt install --yes $DEPS
+  sudo apt install $DEPS
   if [ $? -ne 0 ]; then
     printf "\n$BDR%s %s\n" "CONFLICTING OR MISSING .DEB PACKAGES."
     printf "$BDR%s %s\n" "OR DPKG DATABASE IS LOCKED."
