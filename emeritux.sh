@@ -87,8 +87,8 @@ valgrind wayland-protocols wmctrl xserver-xephyr xwayland zenity"
 # gstreamer1.0-plugins-ugly, imagemagick, libexif-dev,
 # libgeoclue-2-dev, libscim-dev, libosmesa6-dev,
 # linux-tools-common, libvlc-dev, libxine2-dev,
-# manpages-dev, texlive-base, valgrind, xserver-xephyr
-# (3) ccache, cowsay, git, lolcat, wmctrl, zenity
+# manpages-dev, texlive-base, valgrind, xserver-xephyr.
+# (3) ccache, cowsay, git, lolcat, wmctrl, zenity.
 
 # Programs from GIT repositories (latest source code).
 CLONEFL="git clone https://git.enlightenment.org/core/efl.git"
@@ -685,7 +685,6 @@ remov_preq() {
   if [ -d $DOCDIR/sources/$ICNV ]; then
     echo
     beep_question
-    # Questions: Enter either y or n, or press Enter to accept the default values.
     read -t 12 -p "Remove libiconv and rlottie? [Y/n] " answer
     case $answer in
       [yY])
