@@ -166,7 +166,7 @@ bin_deps() {
 
   sudo apt install --yes $DEPS
   if [ $? -ne 0 ]; then
-    printf "\n$BDR%s %s\n" "CONFLICTING OR MISSING .DEB PACKAGES."
+    printf "\n$BDR%s %s\n" "CONFLICTING OR MISSING .DEB PACKAGES"
     printf "$BDR%s %s\n" "OR DPKG DATABASE IS LOCKED."
     printf "$BDR%s $OFF%s\n\n" "SCRIPT ABORTED."
     beep_exit
@@ -443,7 +443,7 @@ do_tests() {
   # Users of VirtualBox: Comment out the following lines if you get unexpected network errors.
   git ls-remote https://git.enlightenment.org/core/efl.git HEAD &>/dev/null
   if [ $? -ne 0 ]; then
-    printf "\n$BDR%s %s\n" "REMOTE HOST IS UNREACHABLE——TRY AGAIN LATER."
+    printf "\n$BDR%s %s\n" "REMOTE HOST IS UNREACHABLE——TRY AGAIN LATER"
     printf "$BDR%s $OFF%s\n\n" "OR CHECK YOUR INTERNET CONNECTION."
     beep_exit
     exit 1
