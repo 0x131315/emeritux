@@ -896,6 +896,7 @@ uninstall_e23() {
     read -t 12 -p "Remove the hidden ccache folder (compiler cache)? [y/N] " answer
     case $answer in
       [yY])
+        ccache -C
         rm -rf $HOME/.ccache
         ;;
       [nN])
