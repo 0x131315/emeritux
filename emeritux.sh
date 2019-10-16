@@ -756,7 +756,7 @@ remov_bin_deps() {
     case $answer in
       [yY])
         printf "\n%s\n\n" "Please read the APT report carefully before pressing y to continue with the uninstall."
-        sleep 4
+        sleep 6
         sudo apt autoremove $DEPS
         echo
         ;;
