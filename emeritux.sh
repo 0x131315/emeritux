@@ -670,14 +670,14 @@ remov_eprog_mn() {
 }
 
 remov_preq() {
-  if [ -d $DOCDIR/sources//rlottie ]; then
+  if [ -d $DOCDIR/sources/rlottie ]; then
     echo
     beep_question
     read -t 12 -p "Remove rlottie? [Y/n] " answer
     case $answer in
       [yY])
         echo
-        cd $DOCDIR/sources//rlottie
+        cd $DOCDIR/sources/rlottie
         sudo ninja -C build uninstall
         cd .. && rm -rf rlottie
         echo
