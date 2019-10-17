@@ -514,9 +514,9 @@ get_meson() {
 
 get_preq() {
   printf "\n\n$BLD%s $OFF%s\n\n" "Installing rlottie..."
-  cd $ESRC
+  cd $DOCDIR/sources
   git clone https://github.com/Samsung/rlottie.git
-  cd $ESRC/rlottie
+  cd $DOCDIR/sources/rlottie
   meson . build
   meson configure -Dexample=false -Dbuildtype=release build
   ninja -C build || mng_err
@@ -670,14 +670,14 @@ remov_eprog_mn() {
 }
 
 remov_preq() {
-  if [ -d $ESRC/rlottie ]; then
+  if [ -d $DOCDIR/sources//rlottie ]; then
     echo
     beep_question
     read -t 12 -p "Remove rlottie? [Y/n] " answer
     case $answer in
       [yY])
         echo
-        cd $ESRC/rlottie
+        cd $DOCDIR/sources//rlottie
         sudo ninja -C build uninstall
         cd .. && rm -rf rlottie
         echo
@@ -687,7 +687,7 @@ remov_preq() {
         ;;
       *)
         echo
-        cd $ESRC/rlottie
+        cd $DOCDIR/sources/rlottie
         sudo ninja -C build uninstall
         cd .. && rm -rf rlottie
         echo
@@ -899,11 +899,11 @@ uninstall_e23() {
 
   remov_preq
 
-  if [ -d $ESRC/$ICNV ]; then
-    cd $ESRC/$ICNV
+  if [ -d $DOCDIR/sources/$ICNV ]; then
+    cd $DOCDIR/sources/$ICNV
     sudo make uninstall
     make maintainer-clean
-    cd .. && rm -rf $ESRC/$ICNV
+    cd .. && rm -rf $DOCDIR/sources//$ICNV
     sudo rm -rf /usr/local/bin/iconv
     echo
   fi
