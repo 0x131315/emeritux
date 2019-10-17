@@ -903,7 +903,7 @@ uninstall_e23() {
     cd $DOCDIR/sources/$ICNV
     sudo make uninstall
     make maintainer-clean
-    cd .. && rm -rf $DOCDIR/sources//$ICNV
+    cd .. && rm -rf $DOCDIR/sources/$ICNV
     sudo rm -rf /usr/local/bin/iconv
     echo
   fi
