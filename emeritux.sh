@@ -54,13 +54,13 @@ OFF="\e[0m"    # Turn off ANSI colors and formatting.
 PREFIX=/usr/local
 DLDIR=$(xdg-user-dir DOWNLOAD)
 DOCDIR=$(xdg-user-dir DOCUMENTS)
-ICNV=libiconv-1.16
 MVER=0.50.0
 E23=$DOCDIR/sources/enlightenment23
 SCRFLR=$HOME/emeritux
 CONFG="./configure --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
 RELEASE=$(lsb_release -sc)
+ICNV=libiconv-1.16
 
 # Build dependencies, recommended(2) and script-related(3) packages.
 DEPS="aspell automake build-essential ccache check cmake cowsay doxygen \
@@ -513,21 +513,10 @@ get_meson() {
 }
 
 get_preq() {
-  cd $DLDIR
-  printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites..."
-  wget -c https://ftp.gnu.org/pub/gnu/libiconv/$ICNV.tar.gz
-  tar xzvf $ICNV.tar.gz -C $DOCDIR/sources
-  cd $DOCDIR/sources/$ICNV
-  $CONFG
-  make
-  sudo make install
-  sudo ldconfig
-  rm -rf $DLDIR/$ICNV.tar.gz
-  echo
-
-  cd $DOCDIR/sources
+  printf "\n\n$BLD%s $OFF%s\n\n" "Installing rlottie..."
+  cd $ESRC
   git clone https://github.com/Samsung/rlottie.git
-  cd $DOCDIR/sources/rlottie
+  cd $ESRC/rlottie
   meson . build
   meson configure -Dexample=false -Dbuildtype=release build
   ninja -C build || mng_err
@@ -578,9 +567,6 @@ install_now() {
     file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
 
   gio set $E23 metadata::custom-icon \
-    file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
-
-  gio set $DOCDIR/sources/$ICNV metadata::custom-icon \
     file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
 
   gio set $DOCDIR/sources/rlottie metadata::custom-icon \
@@ -684,38 +670,24 @@ remov_eprog_mn() {
 }
 
 remov_preq() {
-  if [ -d $DOCDIR/sources/$ICNV ]; then
+  if [ -d $ESRC/rlottie ]; then
     echo
     beep_question
-    read -t 12 -p "Remove libiconv and rlottie? [Y/n] " answer
+    read -t 12 -p "Remove rlottie? [Y/n] " answer
     case $answer in
       [yY])
         echo
-        cd $DOCDIR/sources/$ICNV
-        sudo make uninstall
-        make maintainer-clean
-        cd .. && rm -rf $DOCDIR/sources/$ICNV
-        sudo rm -rf /usr/local/bin/iconv
-        echo
-
-        cd $DOCDIR/sources/rlottie
+        cd $ESRC/rlottie
         sudo ninja -C build uninstall
         cd .. && rm -rf rlottie
         echo
         ;;
       [nN])
-        printf "\n%s\n\n" "(do not remove prerequisites... OK)"
+        printf "\n%s\n\n" "(do not remove rlottie... OK)"
         ;;
       *)
         echo
-        cd $DOCDIR/sources/$ICNV
-        sudo make uninstall
-        make maintainer-clean
-        cd .. && rm -rf $DOCDIR/sources/$ICNV
-        sudo rm -rf /usr/local/bin/iconv
-        echo
-
-        cd $DOCDIR/sources/rlottie
+        cd $ESRC/rlottie
         sudo ninja -C build uninstall
         cd .. && rm -rf rlottie
         echo
@@ -926,6 +898,16 @@ uninstall_e23() {
   fi
 
   remov_preq
+
+  if [ -d $ESRC/$ICNV ]; then
+    cd $ESRC/$ICNV
+    sudo make uninstall
+    make maintainer-clean
+    cd .. && rm -rf $ESRC/$ICNV
+    sudo rm -rf /usr/local/bin/iconv
+    echo
+  fi
+
   remov_meson
   remov_bin_deps
 
