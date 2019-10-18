@@ -51,13 +51,11 @@ BDG="\e[1;32m" # Bold green text.
 BDY="\e[1;33m" # Bold yellow text.
 OFF="\e[0m"    # Turn off ANSI colors and formatting.
 
-PREFIX=/usr/local
 DLDIR=$(xdg-user-dir DOWNLOAD)
 DOCDIR=$(xdg-user-dir DOCUMENTS)
 MVER=0.50.0
 E23=$DOCDIR/sources/enlightenment23
 SCRFLR=$HOME/emeritux
-CONFG="./configure --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
 RELEASE=$(lsb_release -sc)
 ICNV=libiconv-1.16
