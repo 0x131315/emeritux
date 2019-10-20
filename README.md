@@ -1,6 +1,10 @@
 # emeritux.sh
 
-A neat Bash script to build and install Enlightenment 23 on **Linux Mint Tina**.
+A neat Bash script to build and install Enlightenment 23 on Linux Mint Tina.
+
+**You are strongly encouraged to use the new version of this script available here: [ebarista.sh](https://github.com/batden/ebarista)**
+
+**Keep in mind that the two scripts are mutually exclusive, so run emeritux.sh to uninstall E23 first, then reinstall the environment using the new script.**
 
 ## Get started
 
