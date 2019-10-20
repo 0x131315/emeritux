@@ -235,7 +235,7 @@ e_bkp() {
   TSTAMP=$(date +%s)
   mkdir -p $DOCDIR/ebackups
 
-  gio set $DOCDIR/ebackups/ metadata::custom-icon \
+  gio set $DOCDIR/ebackups metadata::custom-icon \
     file:///usr/share/icons/Mint-Y-Pink/places/48/folder.png
 
   mkdir $DOCDIR/ebackups/E_$TSTAMP
