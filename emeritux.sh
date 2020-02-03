@@ -91,9 +91,9 @@ xserver-xephyr xwayland zenity"
 # (3|Required) ccache, cowsay, git, lolcat, wmctrl, zenity.
 
 # Programs from GIT repositories (latest source code).
-CLONEFL="git clone https://git.enlightenment.org/core/efl.git"
-CLONETY="git clone https://git.enlightenment.org/apps/terminology.git"
-CLONE23="git clone https://git.enlightenment.org/core/enlightenment.git"
+CLONEFL="git clone https://github.com/Enlightenment/efl.git"
+CLONETY="git clone https://github.com/billiob/terminology.git"
+CLONE23="git clone https://github.com/Enlightenment/enlightenment.git"
 PROG_MN="efl enlightenment terminology"
 
 # FUNCTIONS
@@ -441,7 +441,7 @@ do_tests() {
   fi
 
   # Users of VirtualBox: Comment out the following lines if you get unexpected network errors.
-  git ls-remote https://git.enlightenment.org/core/efl.git HEAD &>/dev/null
+  git ls-remote https://github.com/Enlightenment/efl.git HEAD &>/dev/null
   if [ $? -ne 0 ]; then
     printf "\n$BDR%s %s\n" "REMOTE HOST IS UNREACHABLE——TRY AGAIN LATER"
     printf "$BDR%s $OFF%s\n\n" "OR CHECK YOUR INTERNET CONNECTION."
