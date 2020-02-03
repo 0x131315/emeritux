@@ -55,7 +55,7 @@ DLDIR=$(xdg-user-dir DOWNLOAD)
 DOCDIR=$(xdg-user-dir DOCUMENTS)
 MVER=0.50.0
 E23=$DOCDIR/sources/enlightenment23
-SCRFLR=$HOME/emeritux
+SCRFLR=$(dirname $(readlink -e $0)) #script dir
 SNIN="sudo ninja -C build install"
 RELEASE=$(lsb_release -sc)
 ICNV=libiconv-1.16
@@ -583,7 +583,7 @@ install_now() {
   cowsay "No Reboot Required... That's All Folks!" | lolcat -a
   echo
 
-  cp -f $DLDIR/emeritux.sh $HOME/.local/bin
+  cp -f $SCRFLR/emeritux.sh $HOME/.local/bin
 }
 
 update_go() {
